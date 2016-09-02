@@ -20,11 +20,11 @@ public class DBCPInitListener implements ServletContextListener {
 
 	public void contextInitialized(ServletContextEvent sce){
 		
-		String poolconfig = sce.getServletContext().getInitParameter("poolConfig");
+		String poolConfig = sce.getServletContext().getInitParameter("poolConfig");
 		Properties prop = new Properties();
 		
 		try {
-			prop.load(new StringReader(poolconfig));
+			prop.load(new StringReader(poolConfig));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			throw new RuntimeException("config load fail", e);
