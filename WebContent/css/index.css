@@ -1,0 +1,182 @@
+@CHARSET "UTF-8";
+/* main 페이지 */
+header {
+	background-color: #210404;
+	height: 120px;
+	padding-top: 5px;
+}
+
+.header-ac{
+	display: table;
+	width: 1150px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.h-l{
+	display: table-cell;
+	width: 350px;
+	vertical-align: middle;
+	padding: 0px 0px 0px 10px;
+}
+.h-c{
+	display: table-cell;
+	width: 450px;
+	vertical-align: middle;
+	text-align: center;
+	padding-top: 20px;
+	font: 14px/2.3em 고딕, Helvetica, arial, sans-serif;
+	color: #ffffff;
+}
+
+.submit_button{
+	background: url("../image/head_sch_btn.jpg");
+	border: none;
+	width: 71px;
+	height: 39px;
+}
+.h-r{
+	display: table-cell;
+	width: 350px;
+	vertical-align: bottom;
+	text-align: right;
+	padding: 0px 10px 0px 0px;
+	color: #f4f4f4;
+	font: 13px/1.2em 고딕, Helvetica, arial, sans-serif;
+}
+
+.h-r a:link, h-r a:visited{
+	font-weight: bold;
+	border-bottom: none;
+	text-decoration:none;
+}
+
+.top-nav {
+	background-color: #492324;
+	text-align: center;
+	font: 13px/1.2em 고딕, Helvetica, arial, sans-serif;
+}
+.top-nav ul {
+	margin: 0px;
+	list-style-type: none;
+	padding: 10px 0px 10px 0px;
+	width: 1150px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.top-nav ul li {
+	display: inline;
+	padding: 0px 10px 0px 10px;
+}
+.top-nav ul li a:link, .top-nav ul li a:visited {
+	color: #e4e0df;
+	border-bottom: none;
+	font-weight: bold;
+	text-decoration:none;
+}
+.top-nav ul li a:hover{
+	color: #ffd683;
+}
+
+#visual{
+	background-color: #000000;
+	text-align: center;
+}
+#visual img{
+	width: 1150px;
+}
+
+.best5{							/* css 속성 순서에 따라서 설정값이 먹힐수도, 안먹힐수도 있음 순서 중요!! */
+	height: 512px;
+	text-align: center;
+	background-color: #463032;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url("../image/main/main_bg_bestitem.jpg");
+}
+
+.item{
+	width: 1150px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 80px 0px 0px 0px;
+	
+}
+.item_btn_more{
+	position:relative;
+	left: 1010px;	
+}
+.item-os{
+	display: table;
+	padding: 30px 0px 0px 0px;
+}
+.item-main{
+	float: left;
+}
+.item-group{
+	border-style: solid;
+	border-width: 1px;
+	border-color: #d9f0f7;
+	width: 138px;
+	padding: 15px 16px 20px 16px;
+	margin: 0px 6px 30px 6px;
+}
+.item p{
+	padding: 80px 0px 0px 0px;
+	color: #f0f0f0;
+}
+.bottom-nav{
+	background-color: #464646;
+	text-align: center;
+	font: 13px/1.2em 고딕, Helvetica, arial, sans-serif;
+}
+.bottom-nav ul {
+	list-style-type: none;
+	margin: 80px 0px 0px 0px;
+	padding: 9px 0px 9px 0px;
+	width: 1150px;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+.bottom-nav ul li {
+	display: inline;
+	padding: 0px 40px 0px 40px;
+}
+.bottom-nav ul li a:link, .bottom-nav ul li a:visited {
+	color: #f4f4f4;
+	border-bottom: none;
+	font-weight: bold;
+	font-size: 13px;
+	text-decoration:none;
+}
+.bottom-nav ul li a:hover{
+	text-decoration: underline;
+}
+footer{
+	width: 1050px;
+	margin: 40px auto 0px auto;
+}
+footer img{
+	vertical-align: top;
+}
+footer div{
+	display: table;
+}
+footer div div{
+	display: table-cell;
+	padding-right: 40px;
+	font-size: 12px;
+}
+
+
+
+
+/* Wine페이지 */
+.best5-wine{							/* css 속성 순서에 따라서 설정값이 먹힐수도, 안먹힐수도 있음 순서 중요!! */
+	height: 529px;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-image: url("../image/wine/Z.jpg");
+}
