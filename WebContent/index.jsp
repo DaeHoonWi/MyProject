@@ -51,7 +51,7 @@
 		<li><a href=''>민속주/중국술/사케</a></li>
 		<li><a href=''>미니어쳐</a></li>
 		<li><a href=''>세일&이벤트</a></li>
-		<li><a href=''>고객센터</a></li>
+		<li><a href='article/list.do'>고객센터</a></li>
 	</ul>
 	</nav>
 	<div id='visual'>

@@ -1,10 +1,10 @@
 package jdbc;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import com.mysql.jdbc.Statement;
+import java.sql.Statement;
 
 public class JdbcUtil {
 	
@@ -45,6 +45,17 @@ public class JdbcUtil {
 		if(conn != null){
 			try {
 				conn.rollback();
+			} catch (SQLException ex) {
+				// TODO Auto-generated catch block
+				ex.printStackTrace();
+			}
+		}
+	}
+	
+	public static void close(PreparedStatement pstmt){
+		if(pstmt != null){
+			try {
+				pstmt.close();
 			} catch (SQLException ex) {
 				// TODO Auto-generated catch block
 				ex.printStackTrace();
