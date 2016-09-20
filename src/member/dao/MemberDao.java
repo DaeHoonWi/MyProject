@@ -39,8 +39,8 @@ public class MemberDao {
 	public void insert(Connection conn, Member mem) throws SQLException{							//member 테이블에 데이터 추가
 		try(PreparedStatement pstmt = conn.prepareStatement("insert into member values(?,?,?,?)")){	//
 			pstmt.setString(1, mem.getId());														//
-			pstmt.setString(2, mem.getName());														//
-			pstmt.setString(3, mem.getPassword());													//
+			pstmt.setString(2, mem.getPassword());													//
+			pstmt.setString(3, mem.getName());														//
 			pstmt.setTimestamp(4, new Timestamp(mem.getRegDate().getTime()));						//
 			pstmt.executeUpdate();																	//
 		}
