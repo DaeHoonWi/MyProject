@@ -55,6 +55,7 @@ public class InsertGoodsHandler implements CommandHandler {
 		return new InsertReuqest(Integer.parseInt(req.getParameter("goodsamount")), 
 						Integer.parseInt(req.getParameter("unitprice")), 
 						req.getParameter("goodsname"), 
-						req.getParameter("seperator"));
+						req.getParameter("seperator"),
+						req.getParameter("comment"));
 	}
 }

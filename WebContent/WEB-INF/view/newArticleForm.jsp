@@ -18,6 +18,8 @@
 		내용:<br><textarea name="content" rows="5" cols="30">${param.content}</textarea>
 	</p>
 	<input type="submit" value="새 글 등록">
+	${ctxPath = pageContext.request.contextPath; ''}
+	<a href="${ctxPath}/article/list.do">[취소]</a>
 	</form>
 
 </body>

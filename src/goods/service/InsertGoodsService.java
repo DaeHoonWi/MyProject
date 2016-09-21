@@ -40,6 +40,6 @@ public class InsertGoodsService {
 	}
 	
 	private Goods toGoods(InsertReuqest req){
-		return new Goods(null, req.getGoodsamount(), req.getUnitprice(), req.getGoodsname(), req.getSeperator());
+		return new Goods(null, req.getGoodsamount(), req.getUnitprice(), req.getGoodsname(), req.getSeperator(), req.getComment());
 	}
 }

@@ -8,12 +8,14 @@ public class InsertReuqest {
 	private Integer unitprice;
 	private String goodsname;
 	private String seperator;
+	private String comment;
 	
-	public InsertReuqest(Integer goodsamount, Integer unitprice, String goodsname, String seperator) {
+	public InsertReuqest(Integer goodsamount, Integer unitprice, String goodsname, String seperator, String comment) {
 		this.goodsamount = goodsamount;
 		this.unitprice = unitprice;
 		this.goodsname = goodsname;
 		this.seperator = seperator;
+		this.comment = comment;
 	}
 
 	public Integer getGoodsamount() {
@@ -31,7 +33,11 @@ public class InsertReuqest {
 	public String getSeperator() {
 		return seperator;
 	}
-	
+
+	public String getComment() {
+		return comment;
+	}
+
 	public void validate(Map<String, Boolean> errors) {
 		checkEmptyInt(errors, goodsamount, "goodsamount");
 		checkEmptyInt(errors, unitprice, "unitprice");

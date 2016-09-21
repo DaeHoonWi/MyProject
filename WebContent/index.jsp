@@ -46,7 +46,7 @@
 	</header>
 	<nav class='top-nav'>
 	<ul>
-		<li><a href='wine.jsp'>와인</a></li>
+		<li><a href='goods/glist.do'>와인</a></li>
 		<li><a href=''>위스키</a></li>
 		<li><a href=''>브랜디/꼬냑</a></li>
 		<li><a href=''>리큐르/보드카</a></li>

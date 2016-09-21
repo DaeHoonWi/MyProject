@@ -12,21 +12,18 @@
 		<table>
 			<tr>
 				<th>수량:</th>
-				<td><input type="text" name="goodsamount"
-					value="${param.goodsamount}"> <c:if
-						test="${errors.goodsamount}">수량을 입력하세요.</c:if></td>
+				<td><input type="text" name="goodsamount" value="${param.goodsamount}"> 
+					<c:if test="${errors.goodsamount}">수량을 입력하세요.</c:if></td>
 			</tr>
 			<tr>
 				<th>단가:</th>
-				<td><input type="text" name="unitprice"
-					value="${param.unitprice}"> <c:if
-						test="${errors.unitprice}">단가를 입력하세요.</c:if></td>
+				<td><input type="text" name="unitprice" value="${param.unitprice}">
+				<c:if test="${errors.unitprice}">단가를 입력하세요.</c:if></td>
 			</tr>
 			<tr>
 				<th>물품명:</th>
-				<td><input type="text" name="goodsname"
-					value="${param.goodsname}"> <c:if
-						test="${errors.goodsname}">물품명을 입력하세요.</c:if></td>
+				<td><input type="text" name="goodsname" value="${param.goodsname}">
+				<c:if test="${errors.goodsname}">물품명을 입력하세요.</c:if></td>
 			</tr>
 			<tr>
 				<th>분류:</th>
@@ -46,12 +43,21 @@
 							<td><input type="radio" name="seperator" value="사케">사케</td>
 							<td><input type="radio" name="seperator" value="미니어쳐">미니어쳐</td>
 						</tr>
+						<tr>
+							<td><c:if test="${errors.seperator}">분류를 선택하세요.</c:if></td>
+						</tr>
 					</table>
 				</td>
 			</tr>
+			<tr>
+				<th>상품설명:</th>
+				<td><textarea name="comment" rows="5" cols="30">${param.comment}</textarea></td>
+			</tr>
 		</table>
-		<c:if test="${errors.seperator}">분류를 선택하세요.</c:if>
+		
 		<input type="submit" value="입력">
+		${ctxPath = pageContext.request.contextPath; ''}
+		<a href="${ctxPath}/index.jsp">[취소]</a>
 	</form>
 </body>
 </html>
