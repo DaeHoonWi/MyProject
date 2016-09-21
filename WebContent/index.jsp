@@ -31,6 +31,8 @@
 				<a href="logout.do">로그아웃</a>
 				&nbsp;&nbsp;/&nbsp;&nbsp;
 				<a href="changePwd.do">비밀번호 변경</a>
+				&nbsp;&nbsp;/&nbsp;&nbsp;
+				<a href="goods/insert.do">상품 등록</a>
 			</u:isLogin>
 			<u:notLogin>
 				<a href="login.do">로그인</a>

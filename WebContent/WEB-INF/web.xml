@@ -75,6 +75,7 @@
 	<url-pattern>/article/list.do</url-pattern>
 	<url-pattern>/article/read.do</url-pattern>
 	<url-pattern>/article/modify.do</url-pattern>
+	<url-pattern>/goods/insert.do</url-pattern>
   </filter-mapping>
   
 </web-app>
