@@ -29,14 +29,14 @@
 		<div class='h-r'>
 			<u:isLogin>
 				${authUser.name}님, 안녕하세요.<br>
-				<a href="logout.do">로그아웃</a>
+				<a href="../logout.do">로그아웃</a>
 				&nbsp;&nbsp;/&nbsp;&nbsp;
-				<a href="changePwd.do">비밀번호 변경</a>
+				<a href="../changePwd.do">비밀번호 변경</a>
 			</u:isLogin>
 			<u:notLogin>
-				<a href="login.do">로그인</a>
+				<a href="../login.do">로그인</a>
 				&nbsp;&nbsp;/&nbsp;&nbsp;
-				<a href="join.do">회원가입</a>
+				<a href="../join.do">회원가입</a>
 			</u:notLogin><br>
 			<img src="../image/main/head_btn_req.png">
 		</div>
@@ -46,44 +46,60 @@
 	<!-- 네비게이션 bar -->
 	<nav class='top-nav'>
 	<ul>
-		<li><a href='wine.jsp'>와인</a></li>
+		<li><a href='glist.do'>와인</a></li>
 		<li><a href=''>위스키</a></li>
 		<li><a href=''>브랜디/꼬냑</a></li>
 		<li><a href=''>리큐르/보드카</a></li>
 		<li><a href=''>민속주/중국술/사케</a></li>
 		<li><a href=''>미니어쳐</a></li>
 		<li><a href=''>세일&이벤트</a></li>
-		<li><a href=''>고객센터</a></li>
+		<li><a href='../article/list.do'>고객센터</a></li>
 	</ul>
 	</nav>
 	
 	<br><br><br><br><br>
 	
+	<!-- 와인 베스트셀러 -->
+	<div class='best5-wine'></div>
 	
-	<table border='1'>
+	<!-- 상품목록 -->
+	<div class='item'>
+	<table>
+		<c:if test="${goodsPage.hasNoGoods()}">
+			<tr>
+				<td colspan='2'>상품이 없습니다.</td>
+			</tr>
+		</c:if>
+<%
+int i=0;
+%>
+			<c:forEach var='goods' items='${goodsPage.content}'>
+<%
+i = i+1;
+if(i%5==1){
+%>
+<tr>
+<%
+}
+%>
+				<td style="padding: 0px 69px 50px 0px; text-align: center;"><a href="gread.do?no=${goods.goodscode}&pageNo=${goodsPage.currentPage}">
+					<img alt="${goods.goodsname}" src="../image/wine/${goods.goodscode}.jpg" 
+					style="border:1px solid #d9f0f7;" width="170"><br> 
+					<c:out value="${goods.goodsname}" /></a><br>
+					${goods.unitprice}
+				</td>
+<%
+if(i==5){
+%>
+</tr>
+<%
+}
+%>				
+			</c:forEach>
+		
+		<c:if test="${goodsPage.hasGoods()}">
 		<tr>
-			<td>상품명</td>
-			<td>가격</td>
-		</tr>
-	<c:if test="${goodsPage.hasNoGoods()}">
-		<tr>
-			<td colspan='2'>상품이 없습니다.</td>
-		</tr>
-	</c:if>
-	<c:forEach var='goods' items='${goodsPage.content}'>
-		<tr>
-			<td>
-				<a href="read.do?no=${article.number}&pageNo=${articlePage.currentPage}"> <!-- 상품 상세보기 기능 추가 후 수정 요망 -->
-					<%-- <c:out value="${goods.goodscode}"/><br> --%>
-					<c:out value="${goods.goodsname}"/>
-				</a>
-			</td>
-			<td>${goods.unitprice}</td>
-		</tr>
-	</c:forEach>
-	<c:if test="${goodsPage.hasGoods()}">
-		<tr>
-			<td colspan='2'>
+			<td class='onlyCenter' colspan='5'>
 				<c:if test="${goodsPage.startPage > 5 }">
 				<a href="glist.do?pageNo=${goodsPage.startPage - 5}">[이전]</a>
 				</c:if>
@@ -97,19 +113,6 @@
 		</tr>
 	</c:if>
 	</table>
-	
-	<!-- 베스트셀러 -->
-	<div class='best5-wine'></div>
-	
-	<!-- 상품 목록 시작 -->
-	<div class='item'>
-		<div class='item-os'>
-			<img src="../image/wine/1233315685_m.jpg">
-			<img src="../image/wine/1331797470_m.jpg">
-			<img src="../image/wine/2172060307_m.jpg"> 
-			<img src="../image/wine/6915502640_m.jpg"> 
-			<img src="../image/wine/9704591046_m.jpg">
-		</div>
 	</div>
 </body>
 </html>

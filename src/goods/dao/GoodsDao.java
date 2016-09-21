@@ -86,11 +86,29 @@ public class GoodsDao {
 	}
 	
 	private Goods convertGoods(ResultSet rs) throws SQLException {
-		return new Goods(null,
+		return new Goods(rs.getInt("goodscode"),
 				rs.getInt("goodsamount"),
 				rs.getInt("unitprice"),
 				rs.getString("goodsname"),
 				rs.getString("seperator"),
-				null);
+				rs.getString("comment"));
+	}
+	
+	public Goods selectById(Connection conn, int no) throws SQLException{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("select * from goods where goodscode = ?");
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			Goods goods = null;
+			if(rs.next()){
+				goods = convertGoods(rs);
+			}
+			return goods;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
 	}
 }
