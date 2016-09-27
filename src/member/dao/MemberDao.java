@@ -24,7 +24,7 @@ public class MemberDao {
 						rs.getString("memberid"),
 						rs.getString("name"),
 						rs.getString("password"),
-						toDate(rs.getTimestamp("regdate")));	
+						toDate(rs.getTimestamp("regdate")));	//가입일
 			}
 		return member;
 		

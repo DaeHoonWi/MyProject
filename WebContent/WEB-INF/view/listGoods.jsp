@@ -63,40 +63,23 @@
 	<div class='best5-wine'></div>
 	
 	<!-- 상품목록 -->
-	<div class='item'>
+	<div class='divide-os'>
 	<table>
 		<c:if test="${goodsPage.hasNoGoods()}">
 			<tr>
 				<td colspan='2'>상품이 없습니다.</td>
 			</tr>
 		</c:if>
-<%
-int i=0;
-%>
+		<tr>
 			<c:forEach var='goods' items='${goodsPage.content}'>
-<%
-i = i+1;
-if(i%5==1){
-%>
-<tr>
-<%
-}
-%>
-				<td style="padding: 0px 69px 50px 0px; text-align: center;"><a href="gread.do?no=${goods.goodscode}&pageNo=${goodsPage.currentPage}">
+				<td class="divide"><a href="gread.do?no=${goods.goodscode}&pageNo=${goodsPage.currentPage}">
 					<img alt="${goods.goodsname}" src="../image/wine/${goods.goodscode}.jpg" 
 					style="border:1px solid #d9f0f7;" width="170"><br> 
 					<c:out value="${goods.goodsname}" /></a><br>
 					${goods.unitprice}
 				</td>
-<%
-if(i==5){
-%>
-</tr>
-<%
-}
-%>				
 			</c:forEach>
-		
+		<tr>	
 		<c:if test="${goodsPage.hasGoods()}">
 		<tr>
 			<td class='onlyCenter' colspan='5'>

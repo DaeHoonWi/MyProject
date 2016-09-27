@@ -23,5 +23,4 @@ public class ListArticleHandler implements CommandHandler {
 		req.setAttribute("articlePage", articlePage);
 		return "/WEB-INF/view/listArticle.jsp";
 	}
-
 }

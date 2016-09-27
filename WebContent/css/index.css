@@ -154,7 +154,7 @@ header {
 	text-decoration: underline;
 }
 footer{
-	width: 1050px;
+	width: 1150px;
 	margin: 40px auto 0px auto;
 }
 footer img{
@@ -179,4 +179,25 @@ footer div div{
 	background-repeat: no-repeat;
 	background-position: center;
 	background-image: url("../image/wine/Z.jpg");
+}
+
+.divide-os{
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+.divide {
+	float: left;
+	width: 20%;
+	padding: 80px 0px 50px 0px;
+	text-align: center;
+}
+
+/* wishGoods페이지 */
+.goods {
+	text-align: center;
+}
+.goods-img{
+	width: 50px;
 }
