@@ -25,7 +25,7 @@ header {
 	vertical-align: middle;
 	text-align: center;
 	padding-top: 20px;
-	font: 14px/2.3em 고딕, Helvetica, arial, sans-serif;
+	font: 14px/2.3em 나눔고딕, 나눔고딕OTF, 고딕, sans-serif;
 	color: #ffffff;
 }
 
@@ -35,14 +35,21 @@ header {
 	width: 71px;
 	height: 39px;
 }
+
 .h-r{
 	display: table-cell;
 	width: 350px;
-	vertical-align: bottom;
+	vertical-align: top;
 	text-align: right;
 	padding: 0px 10px 0px 0px;
-	color: #f4f4f4;
-	font: 13px/1.2em 고딕, Helvetica, arial, sans-serif;
+}
+.inform{
+	color: #e4e0df;
+	float: right;
+	font: 11px/1.2em 나눔고딕, 나눔고딕OTF, 고딕, sans-serif;
+}
+.inform a:link, .inform a:visited {
+	color: #e4e0df;
 }
 
 .h-r a:link, h-r a:visited{
@@ -54,7 +61,7 @@ header {
 .top-nav {
 	background-color: #492324;
 	text-align: center;
-	font: 13px/1.2em 고딕, Helvetica, arial, sans-serif;
+	font: 13px/1.2em 나눔고딕, 나눔고딕OTF, 고딕, sans-serif;
 }
 .top-nav ul {
 	margin: 0px;
@@ -66,7 +73,7 @@ header {
 }
 .top-nav ul li {
 	display: inline;
-	padding: 0px 10px 0px 10px;
+	padding: 0px 30px 0px 30px;
 }
 .top-nav ul li a:link, .top-nav ul li a:visited {
 	color: #e4e0df;
@@ -169,8 +176,29 @@ footer div div{
 	font-size: 12px;
 }
 
-
-
+/* logim페이지 */
+.login_button{
+	background: url("../image/login_btn.gif");
+	border: none;
+	width: 82px;
+	height: 48px;
+}
+.login_table{
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.login_table_os{
+	margin-top: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	border-top: 3px solid #dbdbdb;
+	border-right: 3px solid #dbdbdb;
+	border-bottom: 3px solid #dbdbdb;
+	border-left: 3px solid #dbdbdb;
+	width: 430px;
+	height: 195px;
+}
 
 /* Wine페이지 */
 .best5-wine{							/* css 속성 순서에 따라서 설정값이 먹힐수도, 안먹힐수도 있음 순서 중요!! */

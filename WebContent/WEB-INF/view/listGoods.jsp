@@ -10,12 +10,11 @@
 <title>환영합니다. - 와인</title>
 </head>
 <body>
-	<!-- 헤더 -->
+	<!-- header -->
 	<header>
 	<div class='header-ac'>
 		<div class='h-l'>
-			<a href="../index.jsp">
-			<img src="../image/main/logo.png"></a>
+			<a href="../index.jsp"><img src="../image/main/logo.png"></a>
 		</div>
 		<div class='h-c'>
 
@@ -28,31 +27,41 @@
 		</div>
 		<div class='h-r'>
 			<u:isLogin>
-				${authUser.name}님, 안녕하세요.<br>
-				<a href="../logout.do">로그아웃</a>
-				&nbsp;&nbsp;/&nbsp;&nbsp;
-				<a href="../changePwd.do">비밀번호 변경</a>
+			<table class='inform'>
+				<tr>
+					<td><a href="../member/logout.do">로그아웃</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="">마이페이지</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="../member/changePwd.do">정보수정</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="">즐겨찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="../article/list.do">고객센터</a></td>
+				</tr>
+			</table>
 			</u:isLogin>
 			<u:notLogin>
-				<a href="../login.do">로그인</a>
-				&nbsp;&nbsp;/&nbsp;&nbsp;
-				<a href="../join.do">회원가입</a>
+			<table class='inform'>
+				<tr>
+					<td><a href="../login.do">로그인</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="../join.do">회원가입</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="">즐겨찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a>고객센터</a></td>
+				</tr>
+			</table>
 			</u:notLogin><br>
-			<img src="../image/main/head_btn_req.png">
+			<a href=""><img style="padding-top: 24px" src="../image/main/head_btn_req.png"></a>
 		</div>
 	</div>
 	</header>
-
-	<!-- 네비게이션 bar -->
+	
+	<!-- top-nav -->
 	<nav class='top-nav'>
 	<ul>
-		<li><a href='glist.do'>와인</a></li>
+		<li><a href='../goods/glist.do'>와인</a></li>
 		<li><a href=''>위스키</a></li>
 		<li><a href=''>브랜디/꼬냑</a></li>
 		<li><a href=''>리큐르/보드카</a></li>
 		<li><a href=''>민속주/중국술/사케</a></li>
 		<li><a href=''>미니어쳐</a></li>
-		<li><a href=''>세일&이벤트</a></li>
+		<li><a href='../goods/insert.do'>세일&이벤트</a></li>
 		<li><a href='../article/list.do'>고객센터</a></li>
 	</ul>
 	</nav>
@@ -97,5 +106,38 @@
 	</c:if>
 	</table>
 	</div>
+	
+	<!-- bottom nav -->
+	<nav class='bottom-nav'>
+	<ul>
+		<li><a href=''>회사소개</a></li>
+		<li><a href=''>오시는길</a></li>
+		<li><a href='' style='color: #ff0000;'>개인정보처리방침</a></li>
+		<li><a href=''>고객센터</a></li>
+		<li><a href=''>제휴문의</a></li>
+	</ul>
+	</nav>
+
+	<!-- footer -->
+	<footer>
+	<div>
+		<div>
+			<img src="../image/main/foot_logo.png">
+		</div>
+		<div>
+			<p>
+				상호 : 00주류백화점 123점 대표자명 : 000 사업자등록번호 : 111-11-11111<br /> 주소 :
+				서울00구 00동 111-11 <br /> ※ 내비게이션에 주소입력 시 단지가 넓어 다른 곳으로 도착합니다. 꼭
+				'0000000'을 검색해주세요.<br /> 고객센터 : 11-111-1111 / 11-111-1111 FAX :
+				11-111-1111 메일 : 00000000@naver.com<br /> Copyrightⓒ
+				000000000000000000, All rights reserved.<br /> ※ 온라인 상에서는 판매가
+				불가합니다.
+			</p>
+		</div>
+		<div>
+			<img alt="qrcode" src="../image/foot_cross.gif">
+		</div>
+	</div>
+	</footer>
 </body>
 </html>

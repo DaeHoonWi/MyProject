@@ -9,7 +9,14 @@
 </head>
 <body>
 
-<form action="buy.do">
+<form method='post' action="buy.do">
+	<!-- 결제 페이지로 넘길 정보 : 	아이디, 주소, 총계 / 물품코드, 수량, 합계
+									주문코드는 order에서 받아오기-->
+	<input style="display: none;" type="text" name="id" value="${authUser.id}">
+	<input style="display: none;" type="text" name="extendedprice" value="${savedGoods.extendedprice}">
+	<input style="display: none;" type="text" name="goodscode" value="${savedGoods.goodscode}">
+	<input style="display: none;" type="text" name="orderamount" value="${savedGoods.orderamount}">
+	<input style="display: none;" type="text" name="orderprice" value="${savedGoods.orderprice}">
 <table>
 	<tr>
 		<th colspan='2'>상품정보</th>

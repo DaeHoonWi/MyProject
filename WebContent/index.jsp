@@ -10,6 +10,7 @@
 <title>환영합니다.</title>
 </head>
 <body>
+	<!-- header -->
 	<header>
 	<div class='header-ac'>
 		<div class='h-l'>
@@ -27,23 +28,32 @@
 		</div>
 		<div class='h-r'>
 			<u:isLogin>
-				${authUser.name}님, 안녕하세요.<br>
-				<a href="logout.do">로그아웃</a>
-				&nbsp;&nbsp;/&nbsp;&nbsp;
-				<a href="changePwd.do">비밀번호 변경</a>
-				&nbsp;&nbsp;/&nbsp;&nbsp;
-				<a href="goods/insert.do">상품 등록</a>
+			<table class='inform'>
+				<tr>
+					<td><a href="member/logout.do">로그아웃</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="">마이페이지</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="member/changePwd.do">정보수정</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="">즐겨찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="article/list.do">고객센터</a></td>
+				</tr>
+			</table>
 			</u:isLogin>
 			<u:notLogin>
-				<a href="login.do">로그인</a>
-				&nbsp;&nbsp;/&nbsp;&nbsp;
-				<a href="join.do">회원가입</a>
+			<table class='inform'>
+				<tr>
+					<td><a href="member/login.do">로그인</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="member/join.do">회원가입</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="">즐겨찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a>고객센터</a></td>
+				</tr>
+			</table>
 			</u:notLogin><br>
-			<img src="image/main/head_btn_req.png">
+			<a href=""><img style="padding-top: 24px" src="image/main/head_btn_req.png"></a>
 		</div>
 	</div>
-
 	</header>
+	
+	<!-- top-nav -->
 	<nav class='top-nav'>
 	<ul>
 		<li><a href='goods/glist.do'>와인</a></li>
@@ -52,10 +62,12 @@
 		<li><a href=''>리큐르/보드카</a></li>
 		<li><a href=''>민속주/중국술/사케</a></li>
 		<li><a href=''>미니어쳐</a></li>
-		<li><a href=''>세일&이벤트</a></li>
+		<li><a href='goods/insert.do'>세일&이벤트</a></li>
 		<li><a href='article/list.do'>고객센터</a></li>
 	</ul>
 	</nav>
+	
+	<!-- content -->
 	<div id='visual'>
 		<a href=''><img src="image/main/main_visual_img01.jpg"></a>
 	</div>

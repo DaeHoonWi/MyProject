@@ -14,7 +14,7 @@ import mvc.command.CommandHandler;
 
 public class ChangePasswordHandler implements CommandHandler {
 
-	private static final String FORM_VIEW = "WEB-INF/view/changePwdForm.jsp";
+	private static final String FORM_VIEW = "/WEB-INF/view/changePwdForm.jsp";
 	private ChangePasswordService changePwdSvc = new ChangePasswordService();
 	
 	@Override
