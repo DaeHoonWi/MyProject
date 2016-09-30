@@ -9,19 +9,20 @@ import order.model.OrderGoodsCom;
 
 public class OrderGoodsDao {
 
-	public OrderGoodsCom insert(Connection conn, OrderGoodsCom orderGoods) throws SQLException{
+	public OrderGoodsCom insert(Connection conn, OrderGoodsCom orderGoodsCom) throws SQLException{
 		PreparedStatement pstmt = null;
 		
 		try{
 			pstmt = conn.prepareStatement("insert into ordergoods (ordercode, goodscode, orderamount, orderprice) "
 											+ "values (?,?,?,?)");
-			pstmt.setInt(1, orderGoods.getOrdercode());
-			pstmt.setInt(2, orderGoods.getGoodscode());
-			pstmt.setInt(3, orderGoods.getOrderamount());
-			pstmt.setInt(4, orderGoods.getOrderprice());
+			pstmt.setInt(1, orderGoodsCom.getOrdercode());
+			pstmt.setInt(2, orderGoodsCom.getGoodscode());
+			pstmt.setInt(3, orderGoodsCom.getOrderamount());
+			pstmt.setInt(4, orderGoodsCom.getOrderprice());
 			int insertedCount = pstmt.executeUpdate();
+			
 			if(insertedCount > 0){
-				return orderGoods;
+				return orderGoodsCom;
 			} else {
 				return null;
 			}
