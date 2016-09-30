@@ -19,8 +19,8 @@ public class GoodsDao {
 		ResultSet rs = null;
 		try {
 			pstmt = conn.prepareStatement("insert into goods " 
-										+ "(goodsamount, unitprice, goodsname, seperator, comment) "
-										+ "values(?,?,?,?,?)");
+										+ "(goodsamount, unitprice, goodsname, seperator, comment, salesvolume) "
+										+ "values(?,?,?,?,?,1)");
 			pstmt.setInt(1, goods.getGoodsamount());
 			pstmt.setInt(2, goods.getUnitprice());
 			pstmt.setString(3, goods.getGoodsname());
@@ -38,7 +38,8 @@ public class GoodsDao {
 							goods.getUnitprice(), 
 							goods.getGoodsname(), 
 							goods.getSeperator(),
-							goods.getComment());
+							goods.getComment(),
+							1);
 				}
 			}
 			return null;
@@ -49,12 +50,15 @@ public class GoodsDao {
 		}
 	}
 	
-	public int selectCount(Connection conn) throws SQLException{
+	public int selectCount(Connection conn, String sep) throws SQLException{	//해당 종류의 상품 갯수 구하는 메소드
+		PreparedStatement pstmt = null;
 		Statement stmt = null;
 		ResultSet rs = null;		
 		try {
-			stmt = conn.createStatement();
-			rs = stmt.executeQuery("select count(*) from goods");
+			pstmt = conn.prepareStatement("select count(*) from goods where SEPERATOR = ?;");
+			pstmt.setString(1, sep);
+			rs = pstmt.executeQuery();
+			
 			if(rs.next()){
 				return rs.getInt(1);
 			}
@@ -65,14 +69,17 @@ public class GoodsDao {
 		}
 	}
 	
-	public List<Goods> select(Connection conn, int startRow, int size) throws SQLException {
+	public List<Goods> select(Connection conn, int startRow, int size, String sep) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select * from goods "+
-											"order by goodscode desc limit ?, ?");
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, size);
+			pstmt = conn.prepareStatement("select * from goods "
+										+"where SEPERATOR = ? "
+										+"order by SALESVOLUME desc limit ?, ? ");
+			pstmt.setString(1, sep);
+			pstmt.setInt(2, startRow);
+			pstmt.setInt(3, size);
+			
 			rs = pstmt.executeQuery();
 			List<Goods> result = new ArrayList<>();
 			while(rs.next()){
@@ -91,7 +98,8 @@ public class GoodsDao {
 				rs.getInt("unitprice"),
 				rs.getString("goodsname"),
 				rs.getString("seperator"),
-				rs.getString("comment"));
+				rs.getString("comment"),
+				rs.getInt("salesvolume"));
 	}
 	
 	public Goods selectById(Connection conn, int no) throws SQLException{

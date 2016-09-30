@@ -13,10 +13,10 @@ public class ListGoodsService {
 	private GoodsDao goodsDao = new GoodsDao();
 	private int size = 20;
 	
-	public GoodsPage getGoodsPage(int pageNum){
+	public GoodsPage getGoodsPage(int pageNum, String sep){
 		try(Connection conn = ConnectionProvider.getConnection()){
-			int total = goodsDao.selectCount(conn);
-			List<Goods> content = goodsDao.select(conn, (pageNum-1)*size, size);
+			int total = goodsDao.selectCount(conn, sep);
+			List<Goods> content = goodsDao.select(conn, (pageNum-1)*size, size, sep);
 			return new GoodsPage(total, pageNum, size, content);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);

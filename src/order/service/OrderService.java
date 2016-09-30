@@ -25,14 +25,13 @@ public class OrderService {
 		return new Order(goodscode, orderamount, goodsname, unitprice, orderprice, extendedprice);
 	}
 	
-	public Integer write(OrderRequest req){
+	public Integer write(OrderRequest req, boolean increaseSalesVolume){
 		Connection conn = null;
 		
 		try{
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
-			//OrderCom order = toOrderCom(req);
 			OrderCom order = new OrderCom(null, 
 										req.getId(), 
 										new Date(), 
@@ -52,6 +51,11 @@ public class OrderService {
 				throw new RuntimeException("fail to insert orderGoods");
 			}
 			
+			if(increaseSalesVolume){
+				orderDao.increaseSalesVolume(conn, req.getGoodscode(), req.getOrderamount());
+				orderDao.minusAmount(conn, req.getGoodscode(), req.getOrderamount());
+			}
+			
 			conn.commit();
 			
 			return savedOrder.getOrdercode();
@@ -64,10 +68,5 @@ public class OrderService {
 		} finally {
 			JdbcUtil.close(conn);
 		}
-	}
-	
-	private OrderCom toOrderCom(OrderRequest req){
-		Date now = new Date();
-		return new OrderCom(null, req.getId(), now, req.getDestination(), req.getExtendedprice());
 	}
 }

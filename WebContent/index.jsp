@@ -56,9 +56,9 @@
 	<!-- top-nav -->
 	<nav class='top-nav'>
 	<ul>
-		<li><a href='goods/glist.do'>와인</a></li>
-		<li><a href=''>위스키</a></li>
-		<li><a href=''>브랜디/꼬냑</a></li>
+		<li><a href='goods/glist.do?sep=와인'>와인</a></li>
+		<li><a href='goods/glist.do?sep=위스키'>위스키</a></li>
+		<li><a href='goods/glist.do?sep=꼬냑'>브랜디/꼬냑</a></li>
 		<li><a href=''>리큐르/보드카</a></li>
 		<li><a href=''>민속주/중국술/사케</a></li>
 		<li><a href=''>미니어쳐</a></li>

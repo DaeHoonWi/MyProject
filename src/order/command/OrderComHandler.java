@@ -44,7 +44,7 @@ public class OrderComHandler implements CommandHandler {
 			return FORM_VIEW;
 		}
 		
-		int newOrderNo = orderService.write(orderReq);
+		int newOrderNo = orderService.write(orderReq, true);
 		req.setAttribute("newOrderNo", newOrderNo);
 		
 		return "/WEB-INF/view/orderComSuccess.jsp";

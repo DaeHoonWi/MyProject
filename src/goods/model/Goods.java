@@ -8,8 +8,9 @@ public class Goods {
 	private String goodsname;
 	private String seperator;		// 상품 종류(wine, brandy, ...)
 	private String comment;
+	private Integer salesvolume;
 	
-	public Goods(Integer goodscode, Integer goodsamount, Integer unitprice, String goodsname, String seperator, String comment) {
+	public Goods(Integer goodscode, Integer goodsamount, Integer unitprice, String goodsname, String seperator, String comment, Integer salesvolume) {
 		this.goodscode = goodscode;
 		this.goodsamount = goodsamount;
 		this.unitprice = unitprice;
@@ -40,6 +41,10 @@ public class Goods {
 
 	public String getComment() {
 		return comment;
+	}
+
+	public Integer getSalesvolume() {
+		return salesvolume;
 	}
 	
 	

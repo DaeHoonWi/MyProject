@@ -46,4 +46,20 @@ public class OrderDao {
 	private Timestamp toTimestamp(Date date){
 		return new Timestamp(date.getTime());
 	}
+	
+	public void increaseSalesVolume(Connection conn, int goodscode, int orderamount) throws SQLException{
+		try(PreparedStatement pstmt = conn.prepareStatement("update goods set salesvolume = salesvolume + ? where goodscode = ?;")){
+			pstmt.setInt(1, orderamount);
+			pstmt.setInt(2, goodscode);
+			pstmt.executeUpdate();
+		}
+	}
+	
+	public void minusAmount(Connection conn, int goodscode, int orderamount) throws SQLException{
+		try(PreparedStatement pstmt = conn.prepareStatement("update goods set goodsamount = goodsamount - ? where goodscode = ?;")){
+			pstmt.setInt(1, orderamount);
+			pstmt.setInt(2, goodscode);
+			pstmt.executeUpdate();
+		}
+	}
 }

@@ -8,5 +8,8 @@
 </head>
 <body>
 주문이 완료되었습니다.
+	${ctxPath = pageContext.request.contextPath; ''}
+	<a href="${ctxPath}/order/vefify.do">[주문 내역 확인]</a>
+	<a href="${ctxPath}/index.jsp">[메인 페이지]</a>
 </body>
 </html>
