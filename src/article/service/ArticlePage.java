@@ -17,6 +17,7 @@ public class ArticlePage {
 		this.total = total;
 		this.currentPage = currentPage;
 		this.content = content;
+		
 		if(total == 0){
 			totalPages = 0;
 			startPage = 0;

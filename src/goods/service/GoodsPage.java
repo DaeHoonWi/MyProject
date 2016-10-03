@@ -12,11 +12,14 @@ public class GoodsPage {
 	private int totalPages;
 	private int startPage;
 	private int endPage;
+	private String sep;
 	
-	public GoodsPage(int total, int currentPage, int size, List<Goods> content){
+	public GoodsPage(int total, int currentPage, int size, List<Goods> content, String sep){
 		this.total = total;
 		this.currentPage = currentPage;
 		this.content = content;
+		this.sep = sep;
+		
 		if(total == 0){
 			totalPages = 0;
 			startPage = 0;
@@ -66,4 +69,9 @@ public class GoodsPage {
 	public int getEndPage() {
 		return endPage;
 	}
+
+	public String getSep() {
+		return sep;
+	}
+	
 }

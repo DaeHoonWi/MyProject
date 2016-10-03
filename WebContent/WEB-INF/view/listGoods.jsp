@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="u" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type='text/css' rel='stylesheet' href='../css/index.css'>
-<title>환영합니다. - 와인</title>
+<title>환영합니다. ${goodsPage.content}</title>
 </head>
 <body>
 	<!-- header -->
@@ -56,8 +55,8 @@
 	<nav class='top-nav'>
 	<ul>
 		<li><a href='../goods/glist.do?sep=와인'>와인</a></li>
-		<li><a href=''>위스키</a></li>
-		<li><a href=''>브랜디/꼬냑</a></li>
+		<li><a href='../goods/glist.do?sep=위스키'>위스키</a></li>
+		<li><a href='../goods/glist.do?sep=브랜디'>브랜디/꼬냑</a></li>
 		<li><a href=''>리큐르/보드카</a></li>
 		<li><a href=''>민속주/중국술/사케</a></li>
 		<li><a href=''>미니어쳐</a></li>
@@ -69,7 +68,7 @@
 	<br><br><br><br><br>
 	
 	<!-- 와인 베스트셀러 -->
-	<div class='best5-wine'></div>
+	<div class='best5-wine' style="background-image: url('../image/${goodsPage.sep}/Z.jpg');"></div>
 	
 	<!-- 상품목록 -->
 	<div class='divide-os'>
@@ -82,7 +81,7 @@
 		<tr>
 			<c:forEach var='goods' items='${goodsPage.content}'>
 				<td class="divide"><a href="gread.do?no=${goods.goodscode}&pageNo=${goodsPage.currentPage}">
-					<img alt="${goods.goodsname}" src="../image/wine/${goods.goodscode}.jpg" 
+					<img alt="${goods.goodsname}" src="../image/${goods.seperator}/${goods.goodscode}.jpg" 
 					style="border:1px solid #d9f0f7;" width="170"><br> 
 					<c:out value="${goods.goodsname}" /></a><br>
 					${goods.unitprice}
@@ -91,12 +90,12 @@
 		<tr>	
 		<c:if test="${goodsPage.hasGoods()}">
 		<tr>
-			<td class='onlyCenter' colspan='5'>
+			<td colspan='5' style="text-align: center;">
 				<c:if test="${goodsPage.startPage > 5 }">
 				<a href="glist.do?pageNo=${goodsPage.startPage - 5}">[이전]</a>
 				</c:if>
 				<c:forEach var="pNo" begin="${goodsPage.startPage}" end="${goodsPage.endPage}">
-					<a href="glist.do?pageNo=${pNo}">[${pNo}]</a>
+					<a class='pageNumber' href="glist.do?pageNo=${pNo}">${pNo}</a>
 				</c:forEach>
 				<c:if test="${goodsPage.endPage <goodsPage.totalPages}">
 				<a href="glist.do?pageNo=${goodsPage.startPage + 5}">[다음]</a>

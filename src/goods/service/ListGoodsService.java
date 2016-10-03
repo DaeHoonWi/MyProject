@@ -17,7 +17,7 @@ public class ListGoodsService {
 		try(Connection conn = ConnectionProvider.getConnection()){
 			int total = goodsDao.selectCount(conn, sep);
 			List<Goods> content = goodsDao.select(conn, (pageNum-1)*size, size, sep);
-			return new GoodsPage(total, pageNum, size, content);
+			return new GoodsPage(total, pageNum, size, content, sep);
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

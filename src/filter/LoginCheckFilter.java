@@ -21,11 +21,11 @@ public class LoginCheckFilter implements Filter {
 			throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpSession session = request.getSession(false);
-		if (session == null || session.getAttribute("authUser") == null) {		//세션이 존재하지 않거나 세션에 "authUser"속성이 없으면 login.do로 리다이렉트한다.
-			HttpServletResponse response = (HttpServletResponse) res;			//
-			response.sendRedirect(request.getContextPath() + "/login.do");		//
+		if (session == null || session.getAttribute("authUser") == null) {			//세션이 존재하지 않거나 세션에 "authUser"속성이 없으면 login.do로 리다이렉트한다.
+			HttpServletResponse response = (HttpServletResponse) res;				//
+			response.sendRedirect(request.getContextPath() + "/member/login.do");	//
 		} else {
-			chain.doFilter(req, res);											//세션에 "authUser"속성이 존재하면 로그인한 것으로 판단하고 기능을 실행한다.
+			chain.doFilter(req, res);												//세션에 "authUser"속성이 존재하면 로그인한 것으로 판단하고 기능을 실행한다.
 		}
 	}
 

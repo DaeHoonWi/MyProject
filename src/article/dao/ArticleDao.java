@@ -73,7 +73,7 @@ public class ArticleDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select * from article " + "order by article_no desc limit ?, ?");
+			pstmt = conn.prepareStatement("select * from article order by article_no desc limit ?, ?");
 			pstmt.setInt(1, startRow);
 			pstmt.setInt(2, size);
 			rs = pstmt.executeQuery();

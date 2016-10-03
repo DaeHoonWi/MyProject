@@ -33,7 +33,7 @@
 							<td><input type="radio" name="seperator" value="와인">와인</td>
 							<td><input type="radio" name="seperator" value="위스키">위스키</td>
 							<td><input type="radio" name="seperator" value="브랜디">브랜디</td>
-							<td><input type="radio" name="seperator" value="꼬냑">꼬냑</td>
+							<td><input type="radio" name="seperator" value="브랜디">꼬냑</td>	<!-- 브랜디와 꼬냑을 같은 그룹에 묶기 위해 value값을 브랜디로 설정함 -->
 							<td><input type="radio" name="seperator" value="리큐르">리큐르</td>
 						</tr>
 						<tr>
