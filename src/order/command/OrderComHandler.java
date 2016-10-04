@@ -56,7 +56,12 @@ public class OrderComHandler implements CommandHandler {
 				Integer.parseInt(req.getParameter("goodscode")),
 				Integer.parseInt(req.getParameter("orderamount")),
 				Integer.parseInt(req.getParameter("orderprice")),
-				req.getParameter("destination"));
+				req.getParameter("destination"),
+				req.getParameter("ordername"),
+				Integer.parseInt(req.getParameter("birth")),
+				req.getParameter("phonenum"),
+				req.getParameter("email"),
+				req.getParameter("detail"));
 	}
 
 }

@@ -84,11 +84,11 @@
 			<td colspan='5' style="text-align: right;">게시물 ${articlePage.total}건</td>
 		</tr>
 		<tr style="border-top: 2px solid #8080ff;">
-			<th style="width: 50px;">번호</td>
-			<th style="width: 850px;">제목</td>
-			<th style="width: 110px;">글쓴이</td>
-			<th style="width: 60px;">날짜</td>
-			<th>조회수</td>
+			<th style="width: 50px;">번호</th>
+			<th style="width: 850px;">제목</th>
+			<th style="width: 110px;">글쓴이</th>
+			<th style="width: 60px;">날짜</th>
+			<th>조회수</th>
 		</tr>
 	<c:if test="${articlePage.hasNoArticles()}">
 		<tr>
@@ -113,13 +113,13 @@
 		<tr>
 			<td class='board-bottom-line' colspan='5' style="text-align: center;">
 				<c:if test="${articlePage.startPage > 5 }">
-				<a href="list.do?pageNo=${articlePage.startPage - 5}">[이전]</a>
+				<a href="list.do?pageNo=${articlePage.startPage - 5}"><img alt="[이전]" src="../image/page_prev.gif"></a>
 				</c:if>
 				<c:forEach var="pNo" begin="${articlePage.startPage}" end="${articlePage.endPage}">
 					<a class='pageNumber' href="list.do?pageNo=${pNo}">${pNo}&nbsp;</a>
 				</c:forEach>
 				<c:if test="${articlePagel.endPage <articlePage.totalPages}">
-				<a href="list.do?pageNo=${articlePage.startPage + 5}">[다음]</a>
+				<a href="list.do?pageNo=${articlePage.startPage + 5}"><img alt="[다음]" src="../image/page_next.gif"></a>
 				</c:if>
 			</td>
 		</tr>

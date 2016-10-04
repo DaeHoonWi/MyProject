@@ -36,9 +36,10 @@ public class OrderHandler implements CommandHandler {
 		Integer unitprice = Integer.parseInt(req.getParameter("unitprice"));
 		Integer orderprice = null;
 		Integer extendedprice = null;
+		String seperator = req.getParameter("seperator");
 		
 		try{
-			Order order = orderService.save(goodscode, orderamount, goodsname, unitprice, orderprice, extendedprice);
+			Order order = orderService.save(goodscode, orderamount, goodsname, unitprice, orderprice, extendedprice, seperator);
 			req.getSession().setAttribute("savedGoods", order);
 			res.sendRedirect(req.getContextPath() + "/order/wish.do");
 			return null;

@@ -19,12 +19,17 @@ public class OrderDao {
 		ResultSet rs = null;
 		
 		try {
-			pstmt = conn.prepareStatement("insert into porder (id, orderdate, destination, extendedprice) values(?,?,?,?)");
+			pstmt = conn.prepareStatement("insert into porder (id, orderdate, destination, extendedprice, ordername, birth, phonenum, email, detail) values(?,?,?,?,?,?,?,?,?)");
 			pstmt.setString(1, orderCom.getId());
 			pstmt.setTimestamp(2, toTimestamp(orderCom.getOrderdate()));
 			pstmt.setString(3, orderCom.getDestination());
 			pstmt.setInt(4, orderCom.getExtendedprice());
-		
+			pstmt.setString(5, orderCom.getOrdername());
+			pstmt.setInt(6, orderCom.getBirth());
+			pstmt.setString(7, orderCom.getPhonenum());
+			pstmt.setString(8, orderCom.getEmail());
+			pstmt.setString(9, orderCom.getDetail());
+			
 			int insertedCount = pstmt.executeUpdate();
 			
 			if(insertedCount > 0) {
@@ -32,7 +37,10 @@ public class OrderDao {
 				rs = stmt.executeQuery("select last_insert_id() from porder");
 				if(rs.next()){
 					Integer newNum = rs.getInt(1); //getInt(1) : 1번째 index column 선택
-					return new OrderCom(newNum, orderCom.getId(), orderCom.getOrderdate(), orderCom.getDestination(), orderCom.getExtendedprice());
+					return new OrderCom(newNum, orderCom.getId(), orderCom.getOrderdate(), 
+										orderCom.getDestination(), orderCom.getExtendedprice(), orderCom.getOrdername(),
+										orderCom.getBirth(), orderCom.getPhonenum(), orderCom.getEmail(),
+										orderCom.getDetail());
 				}
 			}
 			return null;

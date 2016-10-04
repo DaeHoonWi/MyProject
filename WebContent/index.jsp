@@ -30,12 +30,19 @@
 			<u:isLogin>
 			<table class='inform'>
 				<tr>
+					
 					<td><a href="member/logout.do">로그아웃</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="">마이페이지</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="member/changePwd.do">정보수정</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="">즐겨찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="article/list.do">고객센터</a></td>
 				</tr>
+				<c:set var="id" value="${authUser.id}"/>
+				<c:if test="${id eq 'test1'}">
+				<tr>
+					<td colspan="5"><a href="goods/insert.do">상품추가</a></td>
+				</tr>
+				</c:if>
 			</table>
 			</u:isLogin>
 			<u:notLogin>
@@ -48,7 +55,7 @@
 				</tr>
 			</table>
 			</u:notLogin><br>
-			<a href=""><img style="padding-top: 24px" src="image/main/head_btn_req.png"></a>
+			<a href="article/list.do"><img style="padding-top: 24px" src="image/main/head_btn_req.png"></a>
 		</div>
 	</div>
 	</header>
@@ -62,7 +69,7 @@
 		<li><a href=''>리큐르/보드카</a></li>
 		<li><a href=''>민속주/중국술/사케</a></li>
 		<li><a href=''>미니어쳐</a></li>
-		<li><a href='goods/insert.do'>세일&이벤트</a></li>
+		<li><a href=''>세일&이벤트</a></li>
 		<li><a href='article/list.do'>고객센터</a></li>
 	</ul>
 	</nav>

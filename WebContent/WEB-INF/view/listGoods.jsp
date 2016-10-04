@@ -34,19 +34,25 @@
 					<td><a href="">즐겨찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="../article/list.do">고객센터</a></td>
 				</tr>
+				<c:set var="id" value="${authUser.id}"/>
+				<c:if test="${id eq 'test1'}">
+				<tr>
+					<td colspan="5"><a href="goods/insert.do">상품추가</a></td>
+				</tr>
+				</c:if>
 			</table>
 			</u:isLogin>
 			<u:notLogin>
 			<table class='inform'>
 				<tr>
-					<td><a href="../login.do">로그인</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
-					<td><a href="../join.do">회원가입</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="../member/login.do">로그인</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="../member/join.do">회원가입</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="">즐겨찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a>고객센터</a></td>
 				</tr>
 			</table>
 			</u:notLogin><br>
-			<a href=""><img style="padding-top: 24px" src="../image/main/head_btn_req.png"></a>
+			<a href="../article/list.do"><img style="padding-top: 24px" src="../image/main/head_btn_req.png"></a>
 		</div>
 	</div>
 	</header>

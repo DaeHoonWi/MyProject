@@ -70,14 +70,15 @@
 	<!-- 주문 페이지로 넘길 정보 : 물품코드, 물품이름, 수량, 단가 -->
 	
 	<input style="display: none;" type="text" name="goodscode" value="${goods.goodscode}">
-	<input style="display: none;" type="text" name=goodsname value="${goods.goodsname}">
-	<input style="display: none;" type="text" name=unitprice value="${goods.unitprice}">
+	<input style="display: none;" type="text" name="goodsname" value="${goods.goodsname}">
+	<input style="display: none;" type="text" name="unitprice"  value="${goods.unitprice}">
+	<input style="display: none;" type="text" name="seperator" value="${goods.seperator}">
 	
 	<table border="1">
 		
 		
 		<tr>
-			<td rowspan="5"><img width="400" alt="${goods.goodscode}" src="../image/wine/${goods.goodscode}.jpg"></td>
+			<td rowspan="5"><img width="400" alt="${goods.goodscode}" src="../image/${goods.seperator}/${goods.goodscode}.jpg"></td>
 			<td colspan="2">${goods.goodsname}</td>
 			
 		</tr>

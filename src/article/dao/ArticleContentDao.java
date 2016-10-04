@@ -54,4 +54,11 @@ public class ArticleContentDao {
 			return pstmt.executeUpdate();
 		}
 	}
+	
+	public void delete(Connection conn, int no) throws SQLException{
+		try(PreparedStatement pstmt = conn.prepareStatement("delete from article_content where article_no = ?")){
+			pstmt.setInt(1, no);
+			pstmt.executeUpdate();
+		}
+	}
 }

@@ -17,12 +17,12 @@ public class OrderService {
 	private OrderDao orderDao = new OrderDao();
 	private OrderGoodsDao orderGoodsDao = new OrderGoodsDao();
 	
-	public Order save(Integer goodscode, Integer orderamount, String goodsname, Integer unitprice, Integer orderprice, Integer extendedprice){
+	public Order save(Integer goodscode, Integer orderamount, String goodsname, Integer unitprice, Integer orderprice, Integer extendedprice, String seperator){
 		
 		orderprice = unitprice * orderamount;
 		extendedprice = orderprice;
 		
-		return new Order(goodscode, orderamount, goodsname, unitprice, orderprice, extendedprice);
+		return new Order(goodscode, orderamount, goodsname, unitprice, orderprice, extendedprice, seperator);
 	}
 	
 	public Integer write(OrderRequest req, boolean increaseSalesVolume){
@@ -36,7 +36,12 @@ public class OrderService {
 										req.getId(), 
 										new Date(), 
 										req.getDestination(), 
-										req.getExtendedprice());
+										req.getExtendedprice(),
+										req.getOrdername(),
+										req.getBirth(),
+										req.getPhonenum(),
+										req.getEmail(),
+										req.getDetail());
 					
 			OrderCom savedOrder = orderDao.insert(conn, order);
 			if(savedOrder == null) {
