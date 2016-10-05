@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type='text/css' rel='stylesheet' href='../css/index.css'>
-<title>상품 입력 폼</title>
+<title>상품 수정 폼</title>
 </head>
 <body>
 	<!-- header -->
@@ -82,47 +82,82 @@
 		
 	<br><br><br>
 	
-	<form action="insert.do" method="post">
+	<form action="update.do" method="post">
+	
+	<!-- 상품코드 넘기기 -->
+	<input type="hidden" name="no" value="${modReq.goodscode}">
+	
 		<table class="board">
 			<tr class="board_write_table_top">
-				<th colspan="2">상품 등록</th>
+				<th colspan="2">상품 업데이트</th>
 				<td/>
 			</tr>
 			<tr>
 				<th class="order_sub">· 수량</th>
-				<td class="order_con"><input type="text" name="goodsamount" value="${param.goodsamount}"> 
+				<td class="order_con"><input type="text" name="goodsamount" value="${modReq.goodsamount}"> 
 					<c:if test="${errors.goodsamount}">수량을 입력하세요.</c:if></td>
 				<td/>
 			</tr>
 			<tr>
 				<th class="order_sub">· 단가</th>
-				<td class="order_con"><input type="text" name="unitprice" value="${param.unitprice}">
+				<td class="order_con"><input type="text" name="unitprice" value="${modReq.unitprice}">
 				<c:if test="${errors.unitprice}">단가를 입력하세요.</c:if></td>
 				<td/>
 			</tr>
 			<tr>
 				<th class="order_sub">· 물품명</th>
-				<td class="order_con"><input type="text" name="goodsname" value="${param.goodsname}">
+				<td class="order_con"><input type="text" name="goodsname" value="${modReq.goodsname}">
 				<c:if test="${errors.goodsname}">물품명을 입력하세요.</c:if></td>
 				<td/>
 			</tr>
 			<tr>
 				<th class="order_sub">· 분류</th>
 				<td class="order_con">
+					<c:set var="sep" value="${modReq.seperator}"/>
 					<table>
 						<tr>
-							<td><input type="radio" name="seperator" value="와인">와인</td>
-							<td><input type="radio" name="seperator" value="위스키">위스키</td>
-							<td><input type="radio" name="seperator" value="브랜디">브랜디</td>
-							<td><input type="radio" name="seperator" value="브랜디">꼬냑</td>	<!-- 브랜디와 꼬냑을 같은 그룹에 묶기 위해 value값을 브랜디로 설정함 -->
-							<td><input type="radio" name="seperator" value="리큐르">리큐르</td>
+							<td>
+								<c:if test="${sep eq '와인'}"><input type="radio" name="seperator" value="와인" checked="checked"></c:if>
+								<c:if test="${sep ne '와인'}"><input type="radio" name="seperator" value="와인"></c:if>와인
+							</td>
+							<td>
+								<c:if test="${sep eq '위스키'}"><input type="radio" name="seperator" value="위스키" checked="checked"></c:if>
+								<c:if test="${sep ne '위스키'}"><input type="radio" name="seperator" value="위스키"></c:if>위스키
+							</td>
+							<td>
+								<c:if test="${sep eq '브랜디'}"><input type="radio" name="seperator" value="브랜디" checked="checked"></c:if>
+								<c:if test="${sep ne '브랜디'}"><input type="radio" name="seperator" value="브랜디"></c:if>브랜디
+							</td>
+							<td>
+								<c:if test="${sep eq '꼬냑'}"><input type="radio" name="seperator" value="꼬냑" checked="checked"></c:if>
+								<c:if test="${sep ne '꼬냑'}"><input type="radio" name="seperator" value="꼬냑"></c:if>꼬냑
+							</td>
+							<td>
+								<c:if test="${sep eq '리큐르'}"><input type="radio" name="seperator" value="리큐르" checked="checked"></c:if>
+								<c:if test="${sep ne '리큐르'}"><input type="radio" name="seperator" value="리큐르"></c:if>리큐르
+							</td>
 						</tr>
 						<tr>
-							<td><input type="radio" name="seperator" value="보드카">보드카</td>
-							<td><input type="radio" name="seperator" value="민속주">민속주</td>
-							<td><input type="radio" name="seperator" value="중국술">중국술</td>
-							<td><input type="radio" name="seperator" value="사케">사케</td>
-							<td><input type="radio" name="seperator" value="미니어쳐">미니어쳐</td>
+							<td>
+								<c:if test="${sep eq '보드카'}"><input type="radio" name="seperator" value="보드카" checked="checked"></c:if>
+								<c:if test="${sep ne '보드카'}"><input type="radio" name="seperator" value="보드카"></c:if>보드카
+							</td>
+							<td>
+								<c:if test="${sep eq '민속주'}"><input type="radio" name="seperator" value="민속주" checked="checked"></c:if>
+								<c:if test="${sep ne '민속주'}"><input type="radio" name="seperator" value="민속주"></c:if>민속주
+							</td>
+							<td>
+								<c:if test="${sep eq '중국술'}"><input type="radio" name="seperator" value="중국술" checked="checked"></c:if>
+								<c:if test="${sep ne '중국술'}"><input type="radio" name="seperator" value="중국술"></c:if>중국술
+							</td>
+							<td>
+								<c:if test="${sep eq '사케'}"><input type="radio" name="seperator" value="사케" checked="checked"></c:if>
+								<c:if test="${sep ne '사케'}"><input type="radio" name="seperator" value="사케"></c:if>사케
+							</td>
+							<td>
+								<c:if test="${sep eq '미니어쳐'}"><input type="radio" name="seperator" value="미니어쳐" checked="checked"></c:if>
+								<c:if test="${sep ne '미니어쳐'}"><input type="radio" name="seperator" value="미니어쳐"></c:if>미니어쳐
+							</td>
 						</tr>
 						<tr>
 							<td><c:if test="${errors.seperator}">분류를 선택하세요.</c:if></td>
@@ -132,7 +167,7 @@
 			</tr>
 			<tr>
 				<th class="order_sub">· 상품설명:</th>
-				<td class="order_con"><textarea name="comment" rows="5" cols="30">${param.comment}</textarea></td>
+				<td class="order_con"><textarea name="comment" rows="5" cols="30">${modReq.comment}</textarea></td>
 				<td/>
 			</tr>
 			<tr>

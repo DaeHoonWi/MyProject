@@ -146,19 +146,23 @@
 	<tr>
 		<td class="order_sub" style="border-top: 2px solid #d9dcd4;">이 름</td>
 		<td class="order_con" style="border-top: 2px solid #d9dcd4;"><input type="text" name="ordername" value="${authUser.name}"></td>
+		<td/>
 	</tr>
 	<tr>
 		<td class="order_sub">생년월일</td>
 		<td class="order_con"><input type="text" name="birth" value=""></td>
+		<td/>
 	</tr>
 	<tr>
 		<td class="order_sub">전화번호</td>
 		<td class="order_con"><input type="text" name="phonenum" value=""></td>
+		<td/>
 	</tr>
 	<tr>
 		<td class="order_sub">E-mail</td>
 		<td class="order_con" style="color: #ff0000"><input type="text" name="email" value=""><br>
 		*상품문의 내용이 이메일로 발송되므로, 정확한 이메일 주소를 입력해주세요.</td>
+		<td/>
 	</tr>
 	<tr>
 		<td class="order_sub">주소</td>

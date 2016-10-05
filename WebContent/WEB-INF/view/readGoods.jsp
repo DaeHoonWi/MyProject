@@ -94,7 +94,13 @@
 			<td><c:out value='${goods.unitprice}'>내용 없음</c:out></td>
 		</tr>
 		<tr>
-		<td colspan="2"><input type="submit" value="구매"></td>
+			<td colspan="2">
+				<input type="submit" value="구매">
+				<c:set var="id" value="${authUser.id}"/>
+				<c:if test="${id eq 'test1'}">
+				<a href="update.do?no=${goods.goodscode}">[상품정보 업데이트]</a>
+				</c:if>
+			</td>
 		</tr>
 		<tr>
 			<td colspan="3">

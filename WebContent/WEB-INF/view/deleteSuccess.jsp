@@ -8,5 +8,7 @@
 </head>
 <body>
 	삭제 완료하였습니다.
+${ctxPath = pageContext.request.contextPath; ''}
+<a href="${ctxPath}/article/list.do">[게시글목록보기]</a>
 </body>
 </html>

@@ -254,7 +254,6 @@ footer div div{
 	font-weight: 300;
 	text-align: center;
 	background-color: #f7f7ff;
-	border-bottom: 1px solid #9999cc;
 }
 .board-bottom-line{
 	border-top: 1px solid #9999cc;
@@ -335,4 +334,17 @@ footer div div{
 	width: 104px;
 	height: 29px;
 	background-image: url("../image/next_btn.gif");
+}
+
+/* order_Success page */
+.order_success_os{
+	margin: 100px auto 100px auto;
+	border-top: 3px solid #dbdbdb;
+	border-right: 3px solid #dbdbdb;
+	border-bottom: 3px solid #dbdbdb;
+	border-left: 3px solid #dbdbdb;
+	width: 500px;
+	height: 300px;
+	text-align: center;
+	font: 15px/2.0em 나눔고딕, 나눔고딕OTF, 고딕, sans-serif;
 }

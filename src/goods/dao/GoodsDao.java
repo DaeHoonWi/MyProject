@@ -119,4 +119,17 @@ public class GoodsDao {
 			JdbcUtil.close(pstmt);
 		}
 	}
+	
+	public int update(Connection conn, Integer goodscode, Integer goodsamount, Integer unitprice, String goodsname, String seperator, String comment) throws SQLException{
+		try(PreparedStatement pstmt = conn.prepareStatement("update goods set goodsamount = ?, unitprice = ?, goodsname = ?, seperator = ?, comment = ?"
+															+"where goodscode = ?")){
+			pstmt.setInt(1, goodsamount);
+			pstmt.setInt(2, unitprice);
+			pstmt.setString(3, goodsname);
+			pstmt.setString(4, seperator);
+			pstmt.setString(5, comment);
+			pstmt.setInt(6, goodscode);
+			return pstmt.executeUpdate();
+		}
+	}
 }
