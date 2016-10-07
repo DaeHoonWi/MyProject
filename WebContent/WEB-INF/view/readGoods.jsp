@@ -35,7 +35,7 @@
 					<td><a href="../article/list.do">고객센터</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<c:set var="id" value="${authUser.id}"/>
 					<c:if test="${id eq 'test1'}">
-					<td colspan="5"><a href="goods/insert.do">상품추가</a></td>
+					<td colspan="5"><a href="../goods/insert.do">상품추가</a></td>
 					</c:if>
 				</tr>
 			</table>
@@ -81,7 +81,7 @@
 		
 		
 		<tr>
-			<td rowspan="4" class="goods_img_td"><img width="380" alt="${goods.goodscode}" src="../image/${goods.seperator}/${goods.goodscode}.jpg"><br>
+			<td rowspan="4" class="goods_img_td"><img width="380" height="506" alt="${goods.goodscode}" src="../image/${goods.seperator}/${goods.goodscode}.jpg"><br>
 			<img alt="이전상품" src="../image/goods_btn_prev.jpg"><img alt="크게보기" src="../image/goods_btn_zoom.jpg"><img alt="다음상품" src="../image/goods_btn_next.jpg"></td>
 			<th colspan="2" class="goods_title">${goods.goodsname}</th>
 			

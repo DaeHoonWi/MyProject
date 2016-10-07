@@ -35,7 +35,7 @@
 					<td><a href="../article/list.do">고객센터</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<c:set var="id" value="${authUser.id}"/>
 					<c:if test="${id eq 'test1'}">
-					<td colspan="5"><a href="goods/insert.do">상품추가</a></td>
+					<td colspan="5"><a href="../goods/insert.do">상품추가</a></td>
 					</c:if>
 				</tr>
 			</table>

@@ -35,7 +35,7 @@
 					<td><a href="../article/list.do">고객센터</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<c:set var="id" value="${authUser.id}"/>
 					<c:if test="${id eq 'test1'}">
-					<td colspan="5"><a href="goods/insert.do">상품추가</a></td>
+					<td colspan="5"><a href="../goods/insert.do">상품추가</a></td>
 					</c:if>
 				</tr>
 			</table>
@@ -70,9 +70,9 @@
 	
 	<br><br><br><br><br>
 	
-	<!-- 와인 베스트셀러 -->
+	<%-- <!-- 베스트셀러 -->
 	<div class='best5-wine' style="background-image: url('../image/${goodsPage.sep}/Z.jpg');"></div>
-	
+	 --%>
 	<!-- 상품목록 -->
 	<div class='divide-os'>
 	<table>
@@ -85,7 +85,7 @@
 			<c:forEach var='goods' items='${goodsPage.content}'>
 				<td class="divide"><a class="goods_link" href="gread.do?no=${goods.goodscode}&pageNo=${goodsPage.currentPage}">
 					<img alt="${goods.goodsname}" src="../image/${goods.seperator}/${goods.goodscode}.jpg" 
-					style="border:1px solid #d9f0f7;" width="170"><br> 
+					style="border:1px solid #d9f0f7;" width="170" height="227"><br> 
 					${goods.goodsname}</a><br>
 					<fmt:formatNumber value="${goods.unitprice}" pattern="#,###.##"/>원
 				</td>

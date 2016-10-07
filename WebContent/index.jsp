@@ -1,3 +1,5 @@
+<%@page import="goods.service.ListGoodsService"%>
+<%@page import="goods.service.GoodsPage"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -73,7 +75,9 @@
 	<div id='visual'>
 		<a href=''><img src="image/main/main_visual_img01.jpg"></a>
 	</div>
+	
 	<div class='best5'></div>
+	
 	<div class='item'>
 		<img src="image/main/main_wine/main_title_ca10.png">
 		<img class='item_btn_more' src="image/main/item_btn_more.png">

@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import jdbc.JdbcUtil;
 import order.model.OrderCom;
@@ -69,5 +71,35 @@ public class OrderDao {
 			pstmt.setInt(2, goodscode);
 			pstmt.executeUpdate();
 		}
+	}
+	
+	public List<OrderCom> select(Connection conn, String userId) throws SQLException{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("select * from porder"
+										+"where id = ?"
+										+"order by orderdate desc");
+			rs = pstmt.executeQuery();
+			List<OrderCom> result = new ArrayList<>();
+			while(rs.next()){
+				result.add(convertOrder(rs));
+			}
+			return result;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);		
+		}
+	}
+	
+	private OrderCom convertOrder(ResultSet rs) throws SQLException{
+		return new OrderCom(rs.getInt("ordercode"), rs.getString("id"), toDate(rs.getTimestamp("orderdate")), 
+				rs.getString("orderdate"), rs.getInt("extendedprice"), rs.getString("ordername"), 
+				rs.getInt("birth"), rs.getString("phonenum"), rs.getString("email"), 
+				rs.getString("detail"));
+	}
+	
+	private Date toDate(Timestamp timestamp){
+		return new Date(timestamp.getTime());
 	}
 }

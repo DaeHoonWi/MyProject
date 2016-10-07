@@ -3,6 +3,7 @@ package order.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
@@ -74,4 +75,15 @@ public class OrderService {
 			JdbcUtil.close(conn);
 		}
 	}
+	
+	/*public OrderData getOrder(String userId, int ordercode){
+		try(Connection conn = ConnectionProvider.getConnection()){
+			List<OrderCom> orderCom = orderDao.select(conn, userId);
+			List<OrderGoodsCom> orderGoodsComs = orderDao.select(conn, userId);
+			
+			return null;
+		} catch (SQLException e) {
+			throw new RuntimeException();
+		}
+	}*/
 }

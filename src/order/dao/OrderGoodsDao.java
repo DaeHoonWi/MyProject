@@ -2,7 +2,10 @@ package order.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import jdbc.JdbcUtil;
 import order.model.OrderGoodsCom;
@@ -29,5 +32,29 @@ public class OrderGoodsDao {
 		} finally {
 			JdbcUtil.close(pstmt);
 		}
+	}
+	
+	public List<OrderGoodsCom> select(Connection conn, int ocode) throws SQLException{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try{
+			pstmt = conn.prepareStatement("select * from ordergoods"
+										+"where ordercode = ?");
+			pstmt.setInt(1, ocode);
+			rs = pstmt.executeQuery();
+			List<OrderGoodsCom> result = new ArrayList<>();
+			while (rs.next()){
+				result.add(convertOrderGoodsCom(rs));
+			}
+			return result;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+	
+	private OrderGoodsCom convertOrderGoodsCom(ResultSet rs)throws SQLException {
+		return new OrderGoodsCom(rs.getInt("ordercode"), rs.getInt("goodscode"), 
+								rs.getInt("orderamount"), rs.getInt("orderprice"));
 	}
 }
