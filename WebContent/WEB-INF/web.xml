@@ -72,10 +72,11 @@
   	<filter-name>LoginCheckFilter</filter-name>
   	<url-pattern>/member/changePwd.do</url-pattern>				<!-- 로그인 필터 기능이 필요한 페이지는 매핑된 주소를 이와같이 계속 추가한다 -->
 	<url-pattern>/article/write.do</url-pattern>
-	<url-pattern>/article/list.do</url-pattern>
-	<url-pattern>/article/read.do</url-pattern>
 	<url-pattern>/article/modify.do</url-pattern>
 	<url-pattern>/goods/insert.do</url-pattern>
+	<url-pattern>/goods/update.do</url-pattern>
+	<url-pattern>/order/wish.do</url-pattern>
+	<url-pattern>/order/buy.do</url-pattern>
   </filter-mapping>
   
 </web-app>

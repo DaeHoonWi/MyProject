@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type='text/css' rel='stylesheet' href='../css/index.css'>
-<title>주문 완료</title>
+<title>환영합니다. ${goodsPage.content}</title>
 </head>
 <body>
 	<!-- header -->
@@ -68,18 +68,12 @@
 	</ul>
 	</nav>
 	
-	<table class="order_success_os">
-		<tr>
-			<td style="font-weight: 600;">주문이 완료되었습니다.</td>
-		</tr>
-		<tr>
-			<td>
-				${ctxPath = pageContext.request.contextPath; ''}
-				<a href="${ctxPath}/order/verify.do">[주문 확인]</a>
-				<a href="${ctxPath}/index.jsp">[메인 페이지]</a>
-			</td>
-		</tr>
-	</table>
+	<br><br>
+	<!-- content -->
+	<div class="company_con" style="text-align: left;">
+	<img src="../image/bottom_nav/help_title_map.jpg"><br><br>
+	<img alt="map" src="../image/bottom_nav/help_map_img01.jpg">
+	</div>
 	
 	<!-- bottom nav -->
 	<nav class='bottom-nav'>

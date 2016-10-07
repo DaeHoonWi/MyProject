@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="u" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,7 +10,6 @@
 <title>주문 입력</title>
 </head>
 <body>
-
 	<!-- header -->
 	<header>
 	<div class='header-ac'>
@@ -32,15 +32,12 @@
 					<td><a href="../member/logout.do">로그아웃</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="">마이페이지</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="../member/changePwd.do">정보수정</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
-					<td><a href="">즐겨찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
-					<td><a href="../article/list.do">고객센터</a></td>
-				</tr>
-				<c:set var="id" value="${authUser.id}"/>
-				<c:if test="${id eq 'test1'}">
-				<tr>
+					<td><a href="../article/list.do">고객센터</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<c:set var="id" value="${authUser.id}"/>
+					<c:if test="${id eq 'test1'}">
 					<td colspan="5"><a href="goods/insert.do">상품추가</a></td>
+					</c:if>
 				</tr>
-				</c:if>
 			</table>
 			</u:isLogin>
 			<u:notLogin>
@@ -48,12 +45,11 @@
 				<tr>
 					<td><a href="../member/login.do">로그인</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="../member/join.do">회원가입</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
-					<td><a href="">즐겨찾기</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
-					<td><a>고객센터</a></td>
+					<td><a href="../article/list.do">고객센터</a></td>
 				</tr>
 			</table>
 			</u:notLogin><br>
-			<a href="../article/list.do"><img style="padding-top: 24px" src="../image/main/head_btn_req.png"></a>
+			<a href="../article/list.do"><img style="padding-top: 26px" src="../image/main/head_btn_req.png"></a>
 		</div>
 	</div>
 	</header>
@@ -108,8 +104,8 @@
 		<td style="width: 50px;"><img class='goods-img' src="../image/${savedGoods.seperator}/${savedGoods.goodscode}.jpg"></td>
 		<td style="text-align: left;">${savedGoods.goodsname}</td>
 		<td class='goods'>${savedGoods.orderamount}</td>
-		<td class='goods'>${savedGoods.unitprice}원</td>		<!-- 단가 -->
-		<td class='goods'>${savedGoods.orderprice}원</td> 	<!-- 총계 -->
+		<td class='goods'><fmt:formatNumber value="${savedGoods.unitprice}" pattern="#,###.##"/>원</td>		<!-- 단가 -->
+		<td class='goods'><fmt:formatNumber value="${savedGoods.orderprice}" pattern="#,###.##"/>원</td> 	<!-- 총계 -->
 		<td/>
 	</tr>
 	<tr style="border-top: 1px solid #d9dcd4; border-bottom: 2px solid #d9dcd4;">
@@ -118,7 +114,7 @@
 		<td/>
 		<td/>
 		<td/>
-		<td class="extendedprice">${savedGoods.extendedprice}원</td>
+		<td class="extendedprice"><fmt:formatNumber value="${savedGoods.extendedprice}" pattern="#,###.##"/>원</td>
 		<td/>
 	</tr>
 	</c:if>
@@ -181,10 +177,39 @@
 		<td/>
 	</tr>
 </table>
-
-
-
 </form>
 
+	<!-- bottom nav -->
+	<nav class='bottom-nav'>
+		<ul>
+			<li><a href='../bnav/company.do'>회사소개</a></li>
+			<li><a href='../bnav/howCome.do'>오시는길</a></li>
+			<li><a href='../bnav/personalInfo.do' style='color:#ff0000;'>개인정보처리방침</a></li>
+			<li><a href='../article/list.do'>고객센터</a></li>
+			<li><a href='../article/list.do'>제휴문의</a></li>
+		</ul>
+	</nav>
+
+	<!-- footer -->
+	<footer>
+	<div>
+		<div>
+			<img src="../image/main/foot_logo.png">
+		</div>
+		<div>
+			<p>
+				상호 : 00주류백화점 123점 대표자명 : 000 사업자등록번호 : 111-11-11111<br /> 주소 :
+				서울00구 00동 111-11 <br /> ※ 내비게이션에 주소입력 시 단지가 넓어 다른 곳으로 도착합니다. 꼭
+				'0000000'을 검색해주세요.<br /> 고객센터 : 11-111-1111 / 11-111-1111 FAX :
+				11-111-1111 메일 : 00000000@naver.com<br /> Copyrightⓒ
+				000000000000000000, All rights reserved.<br /> ※ 온라인 상에서는 판매가
+				불가합니다.
+			</p>
+		</div>
+		<div>
+			<img alt="qrcode" src="../image/foot_cross.gif">
+		</div>
+	</div>
+	</footer>
 </body>
 </html>
