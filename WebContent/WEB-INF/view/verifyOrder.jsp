@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="u" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> <!-- 단위 변환 태그 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type='text/css' rel='stylesheet' href='../css/index.css'>
-<title>회원가입</title>
+<link type="">
+<title>주문 물품</title>
 </head>
 <body>
 	<!-- header -->
@@ -70,40 +72,38 @@
 	<br><br>
 	
 	<!-- content -->
-	<div style="width: 660px; margin: 30px auto 30px auto;">
-
-	<img alt="회원가입" src="../image/join_tit.gif"><br><br>
-	<img alt="join step" src="../image/join_step2.jpg"><br><br>
-	<img alt="축하합니다" src="../image/join_result_title.gif"><br>
+	<table class='board-name'>
+		<tr>
+			<td colspan='5'>&nbsp;<img alt="title_img" src="../image/title_bar.gif" style="vertical-align: middle;">주문 확인</td>
+		</tr>
+	</table>
 	
-	<form action="join.do" method="post">
-		<table class="join_table" style="margin-top: 15px;">
-			<tr>
-				<td><p class="join_success_info">
-				${param.name}님의 회원가입을 진심으로 축하합니다.<br>
-				회원님의 아이디는 ${param.id} 입니다.<br>
-				회원님의 패스워드는 아무도 알 수 없는 암호화 코드로 저장되므로 안심하셔도 좋습니다.<br>
-				아이디, 패스워드 분실시에는 회원가입시 입력하신 패스워드 분실시 질문, 답변을 이용하여 찾을 수 있습니다.<br>
-				회원의 탈퇴는 언제든지 가능하며 탈퇴 후 일정기간이 지난 후, 회원님의 모든 소중한 정보는 삭제하고 있습니다.<br>
-				감사합니다.</p>
-				</td>
-			</tr>
-		</table>
+	<br><br><br>
+	
+	
+	<c:forEach var='goods' items='${orderData.orderGoodsCom}'>
+	<table class="orderList">
+		<tr>
+			<tr style="border-top: 2px solid #8080ff;">
+			<th style="width: 33%;">주문코드</th>
+			<th style="width: 33%;">수 량</th>
+			<th style="width: 33%;">합 계</th>
+		<tr>
+			<td class='goods'><a href="../goods/gread.do?no=${goods.goodscode}" style="text-decoration: none;">${goods.goodscode}</a></td>
+			<td class='goods'>${goods.orderamount}</td>
+			<td class='goods'><fmt:formatNumber value="${goods.orderprice}" pattern="#,###.##"/>원</td> 	<!-- 총계 -->
+		</tr>
+	</table>
+	</c:forEach>
+	
+	
+	
+	
 		
-		<br><br><br>
-		
-		<table class="join_table">
-			<tr>
-				<td style="text-align: center; border: 0;">
-					${ctxPath = pageContext.request.contextPath; ''}
-					<a href="${ctxPath}/index.do"><img class="join_main_go" alt="홈으로가기" src="../image/btn_go_home.gif"></a>
-				</td>
-			</tr>
-		</table>
-	</form>
-	</div>
+	
 
-	<!-- bottom nav -->
+
+		<!-- bottom nav -->
 	<nav class='bottom-nav'>
 		<ul>
 			<li><a href='../bnav/company.do'>회사소개</a></li>
@@ -135,6 +135,5 @@
 		</div>
 	</div>
 	</footer>
-	
 </body>
 </html>

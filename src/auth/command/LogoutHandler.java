@@ -14,7 +14,7 @@ public class LogoutHandler implements CommandHandler {
 		if(session != null){
 			session.invalidate();									//세션 해제
 		}
-		res.sendRedirect(req.getContextPath() + "/index.jsp");		
+		res.sendRedirect(req.getContextPath() + "/index.do");		
 		return null;
 	}
 

@@ -132,4 +132,43 @@ public class GoodsDao {
 			return pstmt.executeUpdate();
 		}
 	}
+	
+	public List<Goods> selectBest(Connection conn, int startRow, int size) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("select * from goods "
+										+"order by SALESVOLUME desc limit ?, ? ");
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, size);
+			
+			rs = pstmt.executeQuery();
+			List<Goods> result = new ArrayList<>();
+			while(rs.next()){
+				result.add(convertGoods(rs));
+			}
+			return result;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+	
+	public int selectCountAll(Connection conn) throws SQLException{	//모든 상품 갯수 구하는 메소드
+		PreparedStatement pstmt = null;
+		Statement stmt = null;
+		ResultSet rs = null;		
+		try {
+			pstmt = conn.prepareStatement("select count(*) from goods;");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				return rs.getInt(1);
+			}
+			return 0;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(stmt);
+		}
+	}
 }

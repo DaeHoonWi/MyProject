@@ -76,14 +76,23 @@ public class OrderService {
 		}
 	}
 	
-	/*public OrderData getOrder(String userId, int ordercode){
+	public OrderData getOrder(String userId){
 		try(Connection conn = ConnectionProvider.getConnection()){
 			List<OrderCom> orderCom = orderDao.select(conn, userId);
-			List<OrderGoodsCom> orderGoodsComs = orderDao.select(conn, userId);
 			
-			return null;
+			return new OrderData(orderCom, null);
 		} catch (SQLException e) {
 			throw new RuntimeException();
 		}
-	}*/
+	}
+	
+	public OrderData getVerify(int ordercode){
+		try(Connection conn = ConnectionProvider.getConnection()){
+			List<OrderGoodsCom> orderGoodsCom = orderDao.verify(conn, ordercode);
+			
+			return new OrderData(null, orderGoodsCom);
+		} catch (SQLException e) {
+			throw new RuntimeException();
+		}
+	}
 }

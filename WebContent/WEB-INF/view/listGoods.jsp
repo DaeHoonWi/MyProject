@@ -14,7 +14,7 @@
 	<header>
 	<div class='header-ac'>
 		<div class='h-l'>
-			<a href="../index.jsp"><img src="../image/main/logo.png"></a>
+			<a href="../index.do"><img src="../image/main/logo.png"></a>
 		</div>
 		<div class='h-c'>
 
@@ -30,7 +30,7 @@
 			<table class='inform'>
 				<tr>
 					<td><a href="../member/logout.do">로그아웃</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
-					<td><a href="">마이페이지</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="../order/list.do?id=${authUser.id}">마이페이지</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="../member/changePwd.do">정보수정</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="../article/list.do">고객센터</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<c:set var="id" value="${authUser.id}"/>
@@ -70,20 +70,48 @@
 	
 	<br><br><br><br><br>
 	
-	<%-- <!-- 베스트셀러 -->
-	<div class='best5-wine' style="background-image: url('../image/${goodsPage.sep}/Z.jpg');"></div>
-	 --%>
+	<!-- 베스트셀러 -->
+	<div class='best5-goods' style="background-image: url('../image/${goodsPage.sep}/Z.jpg');">
+	<table style="margin-left: 30px;">
+	<c:if test="${BestGoodsPage.hasNoGoods()}">
+		<tr>
+			<td>상품이 없습니다.</td>
+		</tr>
+		</c:if>
+		<tr>
+			<td>
+			<div style="position: absolute;">
+			<img class="best5-1" src="../image/best_icon_ranking.png">
+			<img class="best5-2" src="../image/best_icon_ranking.png">
+			<img class="best5-3" src="../image/best_icon_ranking.png">
+			<img class="best5-4" src="../image/best_icon_ranking.png">
+			<img class="best5-5" src="../image/best_icon_ranking.png">
+			</div>
+			<c:forEach var='goods' items='${BestGoodsPage.content}'>
+				<div class="best5-divide"><a href="gread.do?no=${goods.goodscode}&pageNo=${goodsPage.currentPage}">
+					<img alt="${goods.goodsname}" src="../image/${goods.seperator}/${goods.goodscode}.jpg" width="170" height="227"><br> 
+					${goods.goodsname}</a><br>
+					<fmt:formatNumber value="${goods.unitprice}" pattern="#,###.##"/>원
+				</div>
+			</c:forEach>
+			
+			
+			</td>
+		<tr>
+	</table>
+	</div>
+	
 	<!-- 상품목록 -->
 	<div class='divide-os'>
 	<table>
 		<c:if test="${goodsPage.hasNoGoods()}">
-			<tr>
-				<td colspan='2'>상품이 없습니다.</td>
-			</tr>
+		<tr>
+			<td>상품이 없습니다.</td>
+		</tr>
 		</c:if>
 		<tr>
 			<c:forEach var='goods' items='${goodsPage.content}'>
-				<td class="divide"><a class="goods_link" href="gread.do?no=${goods.goodscode}&pageNo=${goodsPage.currentPage}">
+				<td class="divide"><a href="gread.do?no=${goods.goodscode}&pageNo=${goodsPage.currentPage}">
 					<img alt="${goods.goodsname}" src="../image/${goods.seperator}/${goods.goodscode}.jpg" 
 					style="border:1px solid #d9f0f7;" width="170" height="227"><br> 
 					${goods.goodsname}</a><br>

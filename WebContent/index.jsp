@@ -1,7 +1,5 @@
-<%@page import="goods.service.ListGoodsService"%>
-<%@page import="goods.service.GoodsPage"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+ <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="u" tagdir="/WEB-INF/tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,7 +14,7 @@
 	<header>
 	<div class='header-ac'>
 		<div class='h-l'>
-			<a href="index.jsp"><img src="image/main/logo.png"></a>
+			<a href="index.do"><img src="image/main/logo.png"></a>
 		</div>
 		<div class='h-c'>
 
@@ -32,7 +30,7 @@
 			<table class='inform'>
 				<tr>
 					<td><a href="member/logout.do">로그아웃</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
-					<td><a href="">마이페이지</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="order/list.do?id=${authUser.id}">마이페이지</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="member/changePwd.do">정보수정</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="article/list.do">고객센터</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<c:set var="id" value="${authUser.id}"/>
@@ -76,41 +74,121 @@
 		<a href=''><img src="image/main/main_visual_img01.jpg"></a>
 	</div>
 	
-	<div class='best5'></div>
+	<div class='best5'>
+	<div style="width: 1200px; margin-left: auto; margin-right: auto;">
+	<table style="margin-left: 30px;">
+	<c:if test="${BestGoodsPage.hasNoGoods()}">
+		<tr>
+			<td>상품이 없습니다.</td>
+		</tr>
+		</c:if>
+		<tr>
+			<td>
+			<div style="position: absolute;">
+			<img class="best5-1" src="image/best_icon_ranking.png">
+			<img class="best5-2" src="image/best_icon_ranking.png">
+			<img class="best5-3" src="image/best_icon_ranking.png">
+			<img class="best5-4" src="image/best_icon_ranking.png">
+			<img class="best5-5" src="image/best_icon_ranking.png">
+			</div>
+			<c:forEach var='goods' items='${bestPage.content}'>
+				<div class="best5-divide"><a href="gread.do?no=${goods.goodscode}&pageNo=${goodsPage.currentPage}">
+					<img alt="${goods.goodsname}" src="image/${goods.seperator}/${goods.goodscode}.jpg" width="170" height="227"><br> 
+					${goods.goodsname}</a><br>
+					<fmt:formatNumber value="${goods.unitprice}" pattern="#,###.##"/>원
+				</div>
+			</c:forEach>
+			
+			
+			</td>
+		<tr>
+	</table>
+	</div>
+	</div>
 	
 	<div class='item'>
 		<img src="image/main/main_wine/main_title_ca10.png">
-		<img class='item_btn_more' src="image/main/item_btn_more.png">
+		<a href=""><img class='item_btn_more' src="image/main/item_btn_more.png"></a>
+		
 		<div class='item-os'>
-			<img class='item-main' src="image/main/main_wine/main_item_ca10.jpg">
-			<img class='item-group' src="image/main/main_wine/8330508678_m.jpg">
-			<img class='item-group' src="image/main/main_wine/8330890014_m.jpg">
-			<img class='item-group' src="image/main/main_wine/8743468680_m.jpg">
-			<img class='item-group' src="image/main/main_wine/8746217183_m.jpg">
-			<img class='item-group' src="image/main/main_wine/8747388977_m.jpg">
-			<img class='item-group' src="image/main/main_wine/8790000327_m.jpg">
-			<img class='item-group' src="image/main/main_wine/8991368031_m.jpg">
-			<img class='item-group' src="image/main/main_wine/9704591046_m.jpg">
-			<img class='item-group' src="image/main/main_wine/9972166109_m.jpg">
-			<img class='item-group' src="image/main/main_wine/9974612171_m.jpg">
+			<div class="item-os-row">
+				<div class="item-os-left">
+					<img class='item-main' src="image/main/main_wine/main_item_ca10.jpg">
+				</div>
+				<div class="item-os-right">
+					<table>
+						<tr style="width: 940px;">
+						<c:forEach var='goods' items='${winePage.content}'>
+							<td class="item-group"><a href="goods/gread.do?no=${goods.goodscode}&pageNo=${goodsPage.currentPage}">
+							<img alt="${goods.goodsname}" src="image/${goods.seperator}/${goods.goodscode}.jpg" 
+							style="border:1px solid #d9f0f7;" width="130" height="184"><br> 
+							${goods.goodsname}</a><br>
+							<fmt:formatNumber value="${goods.unitprice}" pattern="#,###.##"/>원
+							</td>
+						</c:forEach>
+						</tr>
+					
+					</table>
+				</div>
+			</div>			
 		</div>
 		<p>----------------------------------------------------------------------------------------------------------------------------------------------</p>
 	</div>
+	
+	
 	<div class='item'>
 		<img class='main_title'	src="image/main/main_whisky/main_title_ca20.png">
 		<img class='item_btn_more' src="image/main/item_btn_more.png">
+			
 		<div class='item-os'>
-			<img class='item-main' src="image/main/main_whisky/main_item_ca20.jpg">
-			<img class='item-group' src="image/main/main_whisky/8135855703_m.jpg">
-			<img class='item-group' src="image/main/main_whisky/8136135652_m.jpg">
-			<img class='item-group' src="image/main/main_whisky/8908152968_m.jpg">
-			<img class='item-group' src="image/main/main_whisky/9009732154_m.jpg">
-			<img class='item-group' src="image/main/main_whisky/9091597750_m.jpg">
-			<img class='item-group' src="image/main/main_whisky/9091665515_m.jpg">
-			<img class='item-group' src="image/main/main_whisky/9704147093_m.jpg">
-			<img class='item-group' src="image/main/main_whisky/9704219421_m.jpg">
-			<img class='item-group' src="image/main/main_whisky/9715940937_m.jpg">
-			<img class='item-group' src="image/main/main_whisky/9716329437_m.jpg">
+			<div class="item-os-row">
+				<div class="item-os-left">
+					<img class='item-main' src="image/main/main_whisky/main_item_ca20.jpg">
+				</div>
+				<div class="item-os-right">
+					<table>
+						<tr style="width: 940px;">
+						<c:forEach var='goods' items='${whiskyPage.content}'>
+							<td class="item-group"><a href="goods/gread.do?no=${goods.goodscode}&pageNo=${goodsPage.currentPage}">
+							<img alt="${goods.goodsname}" src="image/${goods.seperator}/${goods.goodscode}.jpg" 
+							style="border:1px solid #d9f0f7;" width="130" height="184"><br> 
+							${goods.goodsname}</a><br>
+							<fmt:formatNumber value="${goods.unitprice}" pattern="#,###.##"/>원
+							</td>
+						</c:forEach>
+						</tr>
+					
+					</table>
+				</div>
+			</div>			
+		</div>
+	<p>----------------------------------------------------------------------------------------------------------------------------------------------</p>
+	</div>
+	<div class='item'>
+		<img class='main_title'	src="image/main/main_wine/main_title_ca30.png">
+		<img class='item_btn_more' src="image/main/item_btn_more.png">
+			
+		<div class='item-os'>
+			<div class="item-os-row">
+				<div class="item-os-left">
+					<img class='item-main' src="image/main/main_wine/main_item_ca30.jpg">
+				</div>
+				<div class="item-os-right">
+					<table>
+						<tr style="width: 940px;">
+						<c:forEach var='goods' items='${brandyPage.content}'>
+							<td class="item-group"><a href="goods/gread.do?no=${goods.goodscode}&pageNo=${goodsPage.currentPage}">
+							<img alt="${goods.goodsname}" src="image/${goods.seperator}/${goods.goodscode}.jpg" 
+							style="border:1px solid #d9f0f7;" width="130" height="184"><br> 
+							${goods.goodsname}</a><br>
+							<fmt:formatNumber value="${goods.unitprice}" pattern="#,###.##"/>원
+							</td>
+						</c:forEach>
+						</tr>
+					
+					</table>
+				</div>
+			</div>			
 		</div>
 	</div>
 	

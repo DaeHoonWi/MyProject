@@ -21,7 +21,9 @@ public class ListGoodsHandler implements CommandHandler {
 		if(pageNoVal != null){
 			pageNo = Integer.parseInt(pageNoVal);
 		}
-		GoodsPage goodsPage = listService.getGoodsPage(pageNo, sep);
+		GoodsPage BestGoodsPage = listService.getGoodsPage(pageNo, sep, 5);		//판매량기준 best5 : 판매량 역순 추출, 위에서 5개 단위로 페이지 구분.
+		req.setAttribute("BestGoodsPage", BestGoodsPage);
+		GoodsPage goodsPage = listService.getGoodsPage(pageNo, sep, 20);		//판매량기준 역순, 20개 단위로 페이지 구분.
 		req.setAttribute("goodsPage", goodsPage);
 		return "/WEB-INF/view/listGoods.jsp";
 	}

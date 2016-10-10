@@ -14,7 +14,7 @@
 	<header>
 	<div class='header-ac'>
 		<div class='h-l'>
-			<a href="../index.jsp"><img src="../image/main/logo.png"></a>
+			<a href="../index.do"><img src="../image/main/logo.png"></a>
 		</div>
 		<div class='h-c'>
 
@@ -30,7 +30,7 @@
 			<table class='inform'>
 				<tr>
 					<td><a href="../member/logout.do">로그아웃</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
-					<td><a href="">마이페이지</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="../order/list.do?id=${authUser.id}">마이페이지</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="../member/changePwd.do">정보수정</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="../article/list.do">고객센터</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<c:set var="id" value="${authUser.id}"/>
@@ -74,7 +74,7 @@
 			<td>
 				비밀번호 수정 완료<br>
 				${ctxPath = pageContext.request.contextPath ; ''}
-				<a href="${ctxPath}/index.jsp"><img alt="메인화면" src="../image/btn_go_home.gif"></a>
+				<a href="${ctxPath}/index.do"><img alt="메인화면" src="../image/btn_go_home.gif"></a>
 			</td>
 		</tr>
 	</table>

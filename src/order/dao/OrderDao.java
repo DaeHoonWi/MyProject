@@ -12,6 +12,7 @@ import java.util.List;
 
 import jdbc.JdbcUtil;
 import order.model.OrderCom;
+import order.model.OrderGoodsCom;
 
 public class OrderDao {
 
@@ -77,9 +78,10 @@ public class OrderDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			pstmt = conn.prepareStatement("select * from porder"
+			pstmt = conn.prepareStatement("select * from porder "
 										+"where id = ?"
 										+"order by orderdate desc");
+			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 			List<OrderCom> result = new ArrayList<>();
 			while(rs.next()){
@@ -101,5 +103,29 @@ public class OrderDao {
 	
 	private Date toDate(Timestamp timestamp){
 		return new Date(timestamp.getTime());
+	}
+	
+	public List<OrderGoodsCom> verify(Connection conn, int ordercode) throws SQLException{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement("select * from ordergoods "
+										+"where ordercode = ?");
+			pstmt.setInt(1, ordercode);
+			rs = pstmt.executeQuery();
+			List<OrderGoodsCom> result = new ArrayList<>();
+			while(rs.next()){
+				result.add(convertOrderGoods(rs));
+			}
+			return result;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);		
+		}
+	}
+	
+	private OrderGoodsCom convertOrderGoods(ResultSet rs) throws SQLException{
+		return new OrderGoodsCom(rs.getInt("ordercode"), rs.getInt("goodscode"), 
+								rs.getInt("orderamount"), rs.getInt("orderprice"));
 	}
 }

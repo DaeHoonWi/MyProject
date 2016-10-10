@@ -7,22 +7,21 @@ import mvc.command.CommandHandler;
 import order.service.OrderData;
 import order.service.OrderService;
 
-public class OrderVerifyHandler implements CommandHandler {
+public class OrderListHandler implements CommandHandler {
 
 	private OrderService orderService = new OrderService();
 	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		
-		Integer ordercode = Integer.parseInt(req.getParameter("oc"));
-		Integer oc = null;
-		if(ordercode != null){
-			oc = ordercode;
+		String reqId = req.getParameter("id");
+		String id = null;
+		if(reqId != null){
+			id = reqId;
 		}	
-		OrderData orderData = orderService.getVerify(oc);
+		OrderData orderData = orderService.getOrder(id);
 		req.setAttribute("orderData", orderData);
 		
-		return "/WEB-INF/view/verifyOrder.jsp";
-	}
-
+		return "/WEB-INF/view/listOrder.jsp";
+	}	
 }

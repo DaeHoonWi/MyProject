@@ -14,7 +14,7 @@
 	<header>
 	<div class='header-ac'>
 		<div class='h-l'>
-			<a href="../index.jsp"><img src="../image/main/logo.png"></a>
+			<a href="../index.do"><img src="../image/main/logo.png"></a>
 		</div>
 		<div class='h-c'>
 
@@ -30,7 +30,7 @@
 			<table class='inform'>
 				<tr>
 					<td><a href="../member/logout.do">로그아웃</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
-					<td><a href="">마이페이지</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="../order/list.do?id=${authUser.id}">마이페이지</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="../member/changePwd.do">정보수정</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="../article/list.do">고객센터</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<c:set var="id" value="${authUser.id}"/>
@@ -74,7 +74,7 @@
 	상품을 입력했습니다. 
 	${ctxPath = pageContext.request.contextPath; ''}
 	<a href="${ctxPath}/goods/insert.do">[새 상품 등록]</a>
-	<a href="${ctxPath}/index.jsp">[메인 페이지]</a>
+	<a href="${ctxPath}/index.do">[메인 페이지]</a>
 	
 		<!-- bottom nav -->
 	<nav class='bottom-nav'>

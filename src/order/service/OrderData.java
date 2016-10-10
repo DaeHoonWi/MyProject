@@ -1,23 +1,25 @@
 package order.service;
 
+import java.util.List;
+
 import order.model.OrderCom;
 import order.model.OrderGoodsCom;
 
 public class OrderData {
 
-	private OrderCom orderCom;
-	private OrderGoodsCom orderGoodsCom;
+	private List<OrderCom> orderCom;
+	private List<OrderGoodsCom> orderGoodsCom;
 	
-	public OrderData(OrderCom orderCom, OrderGoodsCom orderGoodsCom){
+	public OrderData(List<OrderCom> orderCom, List<OrderGoodsCom> orderGoodsCom){
 		this.orderCom = orderCom;
 		this.orderGoodsCom = orderGoodsCom;
 	}
 
-	public OrderCom getOrderCom() {
+	public List<OrderCom> getOrderCom() {
 		return orderCom;
 	}
 
-	public OrderGoodsCom getOrderGoodsCom() {
+	public List<OrderGoodsCom> getOrderGoodsCom() {
 		return orderGoodsCom;
 	}
 }

@@ -11,9 +11,9 @@ import jdbc.connection.ConnectionProvider;
 public class ListGoodsService {
 
 	private GoodsDao goodsDao = new GoodsDao();
-	private int size = 20;
+	//private int size = 20;
 	
-	public GoodsPage getGoodsPage(int pageNum, String sep){
+	public GoodsPage getGoodsPage(int pageNum, String sep, int size){
 		try(Connection conn = ConnectionProvider.getConnection()){
 			int total = goodsDao.selectCount(conn, sep);
 			List<Goods> content = goodsDao.select(conn, (pageNum-1)*size, size, sep);

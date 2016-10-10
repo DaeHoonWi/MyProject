@@ -15,7 +15,7 @@
 	<header>
 	<div class='header-ac'>
 		<div class='h-l'>
-			<a href="../index.jsp"><img src="../image/main/logo.png"></a>
+			<a href="../index.do"><img src="../image/main/logo.png"></a>
 		</div>
 		<div class='h-c'>
 
@@ -31,7 +31,7 @@
 			<table class='inform'>
 				<tr>
 					<td><a href="../member/logout.do">로그아웃</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
-					<td><a href="">마이페이지</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
+					<td><a href="../order/list.do?id=${authUser.id}">마이페이지</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="../member/changePwd.do">정보수정</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<td><a href="../article/list.do">고객센터</a>&nbsp;&nbsp;|&nbsp;&nbsp;</td>
 					<c:set var="id" value="${authUser.id}"/>
@@ -80,122 +80,26 @@
 		
 	<br><br><br>
 	
-	
-	<table class='item_table'>
-		
-	<tr>
-		<td colspan="7">(주문날짜)</td>
-	</tr>
-	<tr>
-		<td class="item_table_left"/>
-		<th colspan='2' style="width: 600px;">상품정보</th>
-		<th style="width: 50px;">수량</th>
-		<th style="width: 100px;">판매가격</th>
-		<th>합계</th>
-		<td class="item_table_right"/>
-	</tr>
-
-
-	<c:if test="${! empty savedGoods}">
-	<tr>
-		<td/>
-		<td style="width: 50px;"><img class='goods-img' src="../image/${savedGoods.seperator}/${savedGoods.goodscode}.jpg"></td>
-		<td style="text-align: left;">${savedGoods.goodsname}</td>
-		<td class='goods'>${savedGoods.orderamount}</td>
-		<td class='goods'><fmt:formatNumber value="${savedGoods.unitprice}" pattern="#,###.##"/>원</td>		<!-- 단가 -->
-		<td class='goods'><fmt:formatNumber value="${savedGoods.orderprice}" pattern="#,###.##"/>원</td> 	<!-- 총계 -->
-		<td/>
-	</tr>
-	<tr style="border-top: 1px solid #d9dcd4; border-bottom: 2px solid #d9dcd4;">
-		<td/>
-		<td/>
-		<td/>
-		<td/>
-		<td/>
-		<td class="extendedprice"><fmt:formatNumber value="${savedGoods.extendedprice}" pattern="#,###.##"/>원</td>
-		<td/>
-	</tr>
-	</c:if>
-	
-	<c:if test="${empty savedGoods}">
-	<tr>
-		<td/>
-		<td colspan='5'>구매할 상품이 없습니다.</td>
-		<td/>
-	</tr>
-	</c:if>
-</table>
-		<table>
-		
-		<tr>
-			<th>주문한 사람</th>
-			<td></td>
-		</tr>
-		<tr>
-			<th>주소</th>
-			<td></td>
-		</tr>
-		<tr>
-			<th>연락처</th>
-			<td></td>
-		</tr>
-		<tr>
-			<th>기타 사항</th>
-			<td></td>
-		</tr>
-	</table>
-	
-	
-	<table class='board'>
-		<tr>
-			<td colspan='5' style="text-align: right;">게시물 ${articlePage.total}건</td>
-		</tr>
+	<table class='orderList'>
 		<tr style="border-top: 2px solid #8080ff;">
-			<th style="width: 50px;">번호</th>
-			<th style="width: 850px;">제목</th>
-			<th style="width: 110px;">글쓴이</th>
-			<th style="width: 60px;">날짜</th>
-			<th>조회수</th>
+			<th style="width: 50px;">주문번호</th>
+			<th style="width: 400px;">주문일</th>
+			<th style="width: 70px;">이 름</th>
 		</tr>
-	<c:if test="${articlePage.hasNoArticles()}">
+	<c:forEach var='order' items='${orderData.orderCom}'>
 		<tr>
-			<td colspan='5'>게시글이 없습니다.</td>
-		</tr>
-	</c:if>
-	<c:forEach var='article' items='${articlePage.content}'>
-		<tr>
-			<td style="text-align: center;">${article.number}</td>
-			<td>
-			<a href="read.do?no=${article.number}&pageNo=${articlePage.currentPage}" style="text-decoration:none;">
+			<td style="text-align: center;"><a href="verify.do?oc=${order.ordercode}" style="text-decoration:none;">
+				${order.ordercode}
+			</a></td>
+			<td><a href="verify.do?oc=${order.ordercode}" style="text-decoration:none;">
 				<img alt="front" src="../image/icon_subject.gif">
-				<c:out value="${article.title}"/>
-			</a>
-			</td>
-			<td>${article.writer.name}</td>
-			<td style="text-align: center;"><fmt:formatDate value="${article.regDate}" type="date" pattern="MM-dd"/></td>
-			<td style="text-align: center;">${article.readCount}</td>
+				<fmt:formatDate value="${order.orderdate}" type="both" dateStyle="long" timeStyle="long"/>
+			</a></td>
+			<td>${order.ordername}</td>
 		</tr>
 	</c:forEach>
-	<c:if test="${articlePage.hasArticles()}">
-		<tr>
-			<td class='board-bottom-line' colspan='5' style="text-align: center;">
-				<c:if test="${articlePage.startPage > 5 }">
-				<a href="list.do?pageNo=${articlePage.startPage - 5}"><img alt="[이전]" src="../image/page_prev.gif"></a>
-				</c:if>
-				<c:forEach var="pNo" begin="${articlePage.startPage}" end="${articlePage.endPage}">
-					<a class='pageNumber' href="list.do?pageNo=${pNo}">${pNo}&nbsp;</a>
-				</c:forEach>
-				<c:if test="${articlePagel.endPage <articlePage.totalPages}">
-				<a href="list.do?pageNo=${articlePage.startPage + 5}"><img alt="[다음]" src="../image/page_next.gif"></a>
-				</c:if>
-			</td>
-		</tr>
-	</c:if>
-		<tr>
-			<td colspan='5' style="text-align: right;"><a href="write.do"><img alt="글쓰기" src="../image/btn_write.gif"></a></td>
-		</tr>
 	</table>
-	
+
 		<!-- bottom nav -->
 	<nav class='bottom-nav'>
 		<ul>
