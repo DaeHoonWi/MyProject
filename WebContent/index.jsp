@@ -219,6 +219,9 @@
 				불가합니다.
 			</p>
 		</div>
+		<div>
+			<img alt="qrcode" src="image/foot_cross.gif">
+		</div>
 	</div>
 	</footer>
 </body>

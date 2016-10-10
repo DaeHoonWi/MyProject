@@ -112,7 +112,7 @@
 		</tr>
 		<tr>
 			<td>
-				<textarea name="coment" rows="5" cols="132">${param.coment}</textarea>
+				<textarea name="coment" rows="5" cols="120">${param.coment}</textarea>
 				<input type="submit" class="coment_submit" style="cursor: pointer" value="">
 			</td>
 		</tr>
