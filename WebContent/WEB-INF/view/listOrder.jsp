@@ -80,26 +80,44 @@
 		
 	<br><br><br>
 	
+	<c:forEach var='order' items='${orderData.orderCom}'>
 	<table class='orderList'>
 		<tr style="border-top: 2px solid #8080ff;">
-			<th style="width: 50px;">주문번호</th>
-			<th style="width: 400px;">주문일</th>
-			<th style="width: 70px;">이 름</th>
-		</tr>
-	<c:forEach var='order' items='${orderData.orderCom}'>
-		<tr>
-			<td style="text-align: center;"><a href="verify.do?oc=${order.ordercode}" style="text-decoration:none;">
-				${order.ordercode}
-			</a></td>
-			<td><a href="verify.do?oc=${order.ordercode}" style="text-decoration:none;">
-				<img alt="front" src="../image/icon_subject.gif">
+			<th colspan="2" style="text-align: center;"><a href="verify.do?oc=${order.ordercode}" style="text-decoration:none;">
 				<fmt:formatDate value="${order.orderdate}" type="both" dateStyle="long" timeStyle="long"/>
-			</a></td>
+			</a></th>
+		</tr>
+		<tr>
+			<th>주문 코드</th>
+			<td><a href="verify.do?oc=${order.ordercode}" style="text-decoration:none;">${order.ordercode}</a></td>
+		</tr>
+		<tr>	
+			<th>이 름</th>
 			<td>${order.ordername}</td>
 		</tr>
-	</c:forEach>
+		<tr>
+			<th>주 소</th>
+			<td>${order.destination}</td>
+		</tr>
+		<tr>	
+			<th>생년월일</th>
+			<td>${order.birth}</td>
+		</tr>
+		<tr>	
+			<th>연락처</th>
+			<td>${order.phonenum}</td>
+		</tr>
+		<tr>	
+			<th>E-mail</th>
+			<td>${order.email}</td>
+		</tr>
+		<tr>	
+			<th>기 타</th>
+			<td>${order.detail}</td>
+		</tr>
 	</table>
-
+	<br><br><br><br><br>
+	</c:forEach>
 		<!-- bottom nav -->
 	<nav class='bottom-nav'>
 		<ul>

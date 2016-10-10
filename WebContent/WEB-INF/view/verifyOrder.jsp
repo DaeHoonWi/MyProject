@@ -95,14 +95,7 @@
 		</tr>
 	</table>
 	</c:forEach>
-	
-	
-	
-	
-		
-	
-
-
+					
 		<!-- bottom nav -->
 	<nav class='bottom-nav'>
 		<ul>

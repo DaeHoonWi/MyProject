@@ -75,7 +75,7 @@
 		<tr>
 			<td>
 				${ctxPath = pageContext.request.contextPath; ''}
-				<a href="${ctxPath}/order/verify.do">[주문 확인]</a>
+				<a href="${ctxPath}/order/list.do?id=${authUser.id}">[주문 확인]</a>
 				<a href="${ctxPath}/index.do">[메인 페이지]</a>
 			</td>
 		</tr>
