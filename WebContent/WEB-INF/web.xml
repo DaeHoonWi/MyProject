@@ -20,7 +20,7 @@
   	<param-name>poolConfig</param-name>
   	<param-value>
   		jdbcDriver=com.mysql.jdbc.Driver
-  		jdbcUrl=jdbc:mysql://localhost:3306/pjtdb?characterEncoding=utf8
+  		jdbcUrl=jdbc:mysql://exampledbinstance.cqfxzwux52km.ap-northeast-2.rds.amazonaws.com:3306/pjtdb?characterEncoding=utf8
   		dbUser=jspexam
   		dbPass=jsppw
   		validationQuery=select 1
