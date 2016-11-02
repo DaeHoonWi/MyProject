@@ -92,7 +92,7 @@
 			<img class="best5-5" src="image/best_icon_ranking.png">
 			</div>
 			<c:forEach var='goods' items='${bestPage.content}'>
-				<div class="best5-divide"><a href="gread.do?no=${goods.goodscode}&pageNo=${goodsPage.currentPage}">
+				<div class="best5-divide"><a href="goods/gread.do?no=${goods.goodscode}&pageNo=${goodsPage.currentPage}">
 					<img alt="${goods.goodsname}" src="image/${goods.seperator}/${goods.goodscode}.jpg" width="170" height="227"><br> 
 					${goods.goodsname}</a><br>
 					<fmt:formatNumber value="${goods.unitprice}" pattern="#,###.##"/>원
